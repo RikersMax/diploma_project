@@ -1,0 +1,25 @@
+.wrapper {
+	display: grid;
+	grid-template-columns: repeat(12, 1fr);
+	grid-template-rows: auto 1fr auto;
+}
+
+header {	
+	grid-column: 1/13;
+	grid-row: 1;
+	background-color: #142936;
+}
+
+main {
+	grid-column: 2/12;
+	grid-row: 2/3;
+	min-height: 100vh;
+	background-color: #fff0f0;;
+}
+
+footer {
+	grid-column: 2/12;
+	grid-row: 3;
+	min-height: 100px;
+	background-color: #142936;	
+}

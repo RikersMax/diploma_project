@@ -11,6 +11,21 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="wrapper">
+        
+      <header>
+        <%= render_navbar %>
+      </header>
+
+      <main>
+        <%= render_message if !flash.empty?  %>
+        <%= yield %>
+      </main>
+
+      <footer>
+        <%= render_footer %>      
+      </footer>
+    
+    </div>
   </body>
 </html>
