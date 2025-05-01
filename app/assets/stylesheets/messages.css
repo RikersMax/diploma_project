@@ -1,0 +1,6 @@
+.message_main_container {
+	position: fixed;
+	background-color: red;
+/*	visibility: hidden;*/	
+	z-index: 1000;
+}

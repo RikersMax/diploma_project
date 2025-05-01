@@ -1,0 +1,166 @@
+.wrapper-guest {
+	display: grid;
+	grid-template-columns: repeat(12, 1fr);
+	grid-template-rows: auto 1fr auto;
+	padding: 0 2em;
+}
+
+.wrapper-guest > header {
+	grid-column: 6/13;
+	grid-row: 2/3;
+	background-color: #CCEFFF;
+	min-height: 100vh;
+}
+
+.wrapper-guest > main {
+	grid-column: 1/6;
+	grid-row: 1/3;
+	min-height: 100vh;
+	background-color: #CCEFFF;
+}
+
+.wrapper-guest > footer {
+	grid-column: 1/13;
+	grid-row: 3;
+	min-height: 100px;
+	background-color: grey;	
+}
+
+/*image*/
+
+.guest_container_image_main {
+	overflow: hidden;
+	max-height: 1024px;
+}
+
+.guest_image_main {	
+	position: relative;
+	left: -12em;
+	
+}
+
+/*main header conbtainer*/
+
+.guest_header_contaier_main {
+	padding-left: 5em;
+}
+
+/*nav bar*/
+
+.guest_nav_bar_container {
+	font-size: 1em;
+	display: flex;
+	justify-content: space-between;	
+	background-color: #CCEFFF;
+	padding-right: 2em;
+	padding-top: 1em;
+	font-size: 1.5em;
+}
+
+
+.guest_contianer_logo {	
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.guest_navbar_logo {
+    width: 100px;
+}
+
+.logo_title {
+
+}
+
+.guest_list_links {
+	list-style: none;
+	display: flex;
+	justify-content: space-between;
+	gap: 1em;
+	align-items: center;
+}
+
+.guest_menu_sign {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 1em;
+}
+
+.guest_menu_sign > .sign_in {
+	color: #000;
+	text-decoration: none;
+}
+
+
+.guest_menu_sign > .sign_up {
+	color: #000;
+	text-decoration: none;
+	border: 2px solid;
+	border-radius: 0.5em;
+	padding: 5px 10px;
+	background-color: #93DAFB;
+}
+
+
+/*content*/
+
+.guest_content_contaier_main {
+	padding-left: 5em;
+	padding-top: 6em;
+}
+
+
+.guest_content_container {
+	min-height: 50%;	
+}
+
+.guest_test_fat {
+	font-size: 3em;
+	font-weight: bold;
+	margin-bottom: 0.3em;
+}
+
+.guest_bot_text {
+	font-size: 1.2em;
+}
+
+.guest_conteiner_content_btn {
+	padding-top: 2em;
+}
+
+.guest_content_btn {
+	font-size: 2em;
+	color: #000;
+	text-decoration: none;
+	border: 2px solid;
+	border-radius: 0.5em;
+	padding: 5px 10px;	
+	background-color: #93DAFB;
+}
+
+.guest_content_container_section_three {
+
+	padding-left: 5em;
+	padding-top: 5em;
+}
+
+.guest_card_wrapper {	
+	display: flex;
+	justify-content: space-between;
+	max-width: 80%;
+}
+
+.guest_card {
+	display: flex;
+	flex-direction: column;
+	width: 14em;
+}
+
+.guest_card_img {
+	
+}
+
+.guest_image_caption {
+	font-size: 1.2em;
+}
