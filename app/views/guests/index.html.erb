@@ -1,28 +1,8 @@
 <%# provide(:title_name, 'Депозитный калькулятор' ) %>
 <%# render_navbar  %>
 
-<article class="main-container-service">
-	<section>	
-		<div class="header-page-container">
-			<strong class="header-page-name">Депозитный калькулятор</strong>	
-			<%# current_user.remember_token_digest %>
-
-		</div>
+<article>
+	<section class="guest_container_image_main">	
+		<%= image_tag("image_guest_main.jpg", class: 'guest_image_main') %>
 	</section>	
-
-
-	<section class="container-service">		
-
-		<div class="service-card-div">
-			<div class="service-card-desc">				
-				<%= content_tag(:p, 'Добро пожаловать на сайт, где вы можете легко и удобно сравнить предложения по вкладам от ведущих банков!' , class: 'service-desc') %>
-			</div>
-		</div>
-
-		<div class="service-card-name">
-			<span>Что предлагает наш сайт?</span>			
-		</div>
-	
-	</section>
-
 </article>

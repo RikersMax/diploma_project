@@ -11,19 +11,19 @@
   </head>
 
   <body>
-    <div class="wrapper">
+    <div <%= @guest_page ? 'class=wrapper-guest' : 'class=wrapper' %> >
         
-      <header>
-        <%= render_navbar %>
+      <header class="header" >
+        <%= render(partial: (@guest_page[:guest_navbar] || 'shared/navbar')) %>
       </header>
 
-      <main>
-        <%= render_message if !flash.empty?  %>
+      <main class="main">
+        <%= render(partial: 'shared/message') if !flash.empty? %>
         <%= yield %>
       </main>
 
-      <footer>
-        <%= render_footer %>      
+      <footer class="footer">
+        <%= render(partial: 'shared/footer') %>      
       </footer>
     
     </div>
