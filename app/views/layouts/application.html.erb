@@ -14,7 +14,7 @@
         <div <%= @guest_page ? 'class=wrapper-guest' : 'class=wrapper' %> >
 
             <header>
-                <%= render(partial: (@guest_page[:guest_navbar] || 'shared/navbar')) %>
+                <%= render(partial: render_navbar) %>
             </header>
 
             <main>

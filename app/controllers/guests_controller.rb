@@ -1,6 +1,6 @@
 class GuestsController < ApplicationController
 	def index
-		@guest_page = {guest_page: true, guest_navbar: 'navbar'}
+		@guest_page = true
 		flash[:message] = 'my message'
 	end
 end
