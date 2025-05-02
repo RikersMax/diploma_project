@@ -1,31 +1,31 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>SelfFinanceDiplom</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+    <head>
+        <title>SelfFinanceDiplom</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <%= csrf_meta_tags %>
+        <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-  </head>
+        <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+        <%= javascript_importmap_tags %>
+    </head>
 
-  <body>
-    <div <%= @guest_page ? 'class=wrapper-guest' : 'class=wrapper' %> >
-        
-      <header class="header" >
-        <%= render(partial: (@guest_page[:guest_navbar] || 'shared/navbar')) %>
-      </header>
+    <body>
+        <div <%= @guest_page ? 'class=wrapper-guest' : 'class=wrapper' %> >
 
-      <main class="main">
-        <%= render(partial: 'shared/message') if !flash.empty? %>
-        <%= yield %>
-      </main>
+            <header>
+                <%= render(partial: (@guest_page[:guest_navbar] || 'shared/navbar')) %>
+            </header>
 
-      <footer class="footer">
-        <%= render(partial: 'shared/footer') %>      
-      </footer>
-    
-    </div>
-  </body>
+            <main>
+                <%= render(partial: 'shared/message') if !flash.empty? %>
+                <%= yield %>
+            </main>
+
+            <footer>
+                <%= render(partial: 'shared/footer') %>      
+            </footer>
+
+        </div>
+    </body>
 </html>

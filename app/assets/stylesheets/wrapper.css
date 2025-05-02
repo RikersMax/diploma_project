@@ -14,12 +14,12 @@ main {
 	grid-column: 2/12;
 	grid-row: 2/3;
 	min-height: 100vh;
-	background-color: #fff0f0;;
+	background-color: #fff0f0;
 }
 
 footer {
 	grid-column: 2/12;
 	grid-row: 3;
 	min-height: 100px;
-	background-color: #142936;	
+	background-color: #142936;
 }
