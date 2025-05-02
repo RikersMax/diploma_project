@@ -1,5 +1,19 @@
-<article>
-	<section class="">	
-		<p>nav bar</p>
+<article class="guest_header_contaier_main">
+	<section class="guest_nav_bar_container">
+		<div class="guest_contianer_logo">
+			<%= image_tag("logo.png", class: 'guest_navbar_logo') %>
+			<span class="logo_title">Teppilin</span>
+		</div>
+
+		<ul class="guest_list_links">
+			<li>О проекте</li>
+			<li>О задачи</li>
+			<li>Обо всем</li>
+		</ul>
+		
+		<div class="guest_menu_sign">
+			<%= link_to('Вход', '#', class: 'sign_in') %>
+			<%= link_to('Регистрация', '#', class: 'sign_up') %>			
+		</div>
 	</section>
 </article>

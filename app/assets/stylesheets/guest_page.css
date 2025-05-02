@@ -27,12 +27,12 @@
 
 /*image*/
 
-.guest_container_image_main {
+.guest-container-image-main {
 	overflow: hidden;
 	max-height: 1024px;
 }
 
-.guest_image_main {	
+.guest-image-main {	
 	position: relative;
 	left: -12em;
 	
@@ -40,13 +40,13 @@
 
 /*main header conbtainer*/
 
-.guest_header_contaier_main {
+.guest-header-contaier-main {
 	padding-left: 5em;
 }
 
 /*nav bar*/
 
-.guest_nav_bar_container {
+.guest-nav-bar-container {
 	font-size: 1em;
 	display: flex;
 	justify-content: space-between;	
@@ -57,21 +57,21 @@
 }
 
 
-.guest_contianer_logo {	
+.guest-contianer-logo {	
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 }
 
-.guest_navbar_logo {
+.guest-navbar-logo {
     width: 100px;
 }
 
-.logo_title {
+.logo-title {
 
 }
 
-.guest_list_links {
+.guest-list-links {
 	list-style: none;
 	display: flex;
 	justify-content: space-between;
@@ -79,20 +79,20 @@
 	align-items: center;
 }
 
-.guest_menu_sign {
+.guest-menu-sign {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	gap: 1em;
 }
 
-.guest_menu_sign > .sign_in {
+.guest-menu-sign > .sign-in {
 	color: #000;
 	text-decoration: none;
 }
 
 
-.guest_menu_sign > .sign_up {
+.guest-menu-sign > .sign-up {
 	color: #000;
 	text-decoration: none;
 	border: 2px solid;
@@ -104,31 +104,31 @@
 
 /*content*/
 
-.guest_content_contaier_main {
+.guest-content-contaier-main {
 	padding-left: 5em;
 	padding-top: 6em;
 }
 
 
-.guest_content_container {
+.guest-content-container {
 	min-height: 50%;	
 }
 
-.guest_test_fat {
+.guest-test-fat {
 	font-size: 3em;
 	font-weight: bold;
 	margin-bottom: 0.3em;
 }
 
-.guest_bot_text {
+.guest-bot-text {
 	font-size: 1.2em;
 }
 
-.guest_conteiner_content_btn {
+.guest-conteiner-content-btn {
 	padding-top: 2em;
 }
 
-.guest_content_btn {
+.guest-content-btn {
 	font-size: 2em;
 	color: #000;
 	text-decoration: none;
@@ -138,28 +138,23 @@
 	background-color: #93DAFB;
 }
 
-.guest_content_container_section_three {
-
+.guest-content-container-section-three {
 	padding-left: 5em;
 	padding-top: 5em;
 }
 
-.guest_card_wrapper {	
+.guest-card-wrapper {	
 	display: flex;
 	justify-content: space-between;
 	max-width: 80%;
 }
 
-.guest_card {
+.guest-card {
 	display: flex;
 	flex-direction: column;
 	width: 14em;
 }
 
-.guest_card_img {
-	
-}
-
-.guest_image_caption {
+.guest-image-caption {
 	font-size: 1.2em;
 }
