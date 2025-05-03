@@ -5,7 +5,7 @@
 }
 
 header {	
-	grid-column: 1/13;
+	grid-column: 2/12;
 	grid-row: 1;
 	background-color: #142936;
 }
@@ -14,7 +14,7 @@ main {
 	grid-column: 2/12;
 	grid-row: 2/3;
 	min-height: 100vh;
-	background-color: #fff0f0;
+	background-color: #e6f7ff;
 }
 
 footer {
