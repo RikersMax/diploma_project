@@ -1,0 +1,84 @@
+
+/*font size*/
+
+
+.size-s {
+	font-size: 0.5em;
+}
+
+.size-m {
+	font-size: 0.75em;
+}
+
+.size-l {
+	font-size: 1em;
+}
+
+.size-xl {
+	font-size: 1.25em;
+}
+
+.size-xxl {
+	font-size: 1.5em;
+}
+
+.size-xxxl {
+	font-size: 1.75em;
+}
+
+.size-4xl {
+	font-size: 2em;
+}
+
+
+/*margins*/
+
+.m-top-s {
+	margin-top: 0.5em;
+}
+
+.m-top-m {
+	margin-top: 1em;
+}
+
+.m-top-l {
+	margin-top: 1.5em;
+}
+
+.m-bot-s {
+	margin-bottom: 0.5em;
+}
+
+.m-bot-m {
+	margin-bottom: 1em;
+}
+
+.m-bot-l {
+	margin-bottom: 1.5em;
+}
+
+/*padding*/
+
+.p-top-s {
+	padding-top: 0.5em;
+}
+
+.p-top-m {
+	padding-top: 1em;
+}
+
+.p-top-l {
+	padding-top: 1.5em;
+}
+
+.p-bot-s {
+	padding-bottom: 0.5em;
+}
+
+.p-bot-m {
+	padding-bottom: 1em;
+}
+
+.p-bot-l {
+	padding-bottom: 1.5em;
+}
