@@ -23,6 +23,10 @@ module UserAuthenticate
       end
       return @current_user
 =end      
+      @current_user ||= User.find_by(remember_token_digest: session[:user_id]) if session[:user_id].present?          
+      
+      #@current_user ||= User.find_by(id: session[:user_id]) if session[:user_id].present?      
+    
     end
 
     def user_signed_in?
@@ -36,7 +40,14 @@ module UserAuthenticate
     def require_authentication
       return if user_signed_in?
       
-      flash[:message] = t('flash.message.need_regidster')
+      flash[:message] = 'message from require_authentication'
+      redirect_to(root_path)
+    end
+
+    def no_require_authentication
+      return if !user_signed_in?
+        
+      flash[:message] = 'message from no_authentication_required'
       redirect_to(root_path)
     end
 

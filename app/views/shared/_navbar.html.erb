@@ -25,18 +25,15 @@
 				      <%= image_tag('user-solid', class: 'nav-bar-img-user') %>
 				    </summary>
 				    <ul>
-				      <li><a href="#">I'm a dropdown.</a></li>
-				      <li><a href="#">In Pure CSS</a></li>
-				      <li><a href="#">As in...</a></li>
-				      <li><a href="#">No JavaScript.</a></li>
-				      <li><a href="#">At All.</a></li>
+				      <li><a href="#">accaunt</a></li>
+				      <li><%= button_to('Exit', "/session/#{session[:user_id]}", method: :delete)  %></li>				      
 				  </ul>
 				</details>
 
 			<% else %>
 
 				<div class="nav-bar-menu-sign">
-					<%= link_to('Вход', '#', class: 'sign-in') %>
+					<%= link_to('Вход', new_session_path, class: 'sign-in') %>
 					<%= link_to('Регистрация', '#', class: 'sign-up') %>			
 				</div>
 			
