@@ -1,0 +1,84 @@
+<div class="content-section-create-object">
+	<div class="content-new-form-container-create-object">
+		
+		<%= form_with(model: accounting_object,						
+						url: url, 
+						class: 'content-form-create-object',
+						method: method_action,
+						data: {turbo: false}
+						) do |f|  %>	
+
+			<div class="user-setting-header-bottom size-xl">
+		    	<h2>Create object</h2>
+		    </div>								
+
+		    <div class="form-container-field-object">
+		    	<%= f.label(:name_object, 'Название объекта:', class: 'm-top-m size-xl') %>
+		    	<%= f.text_field(:name_object, class: 'form-input-create-object size-xl m-top-s') %>
+
+			    <div class="text-bottom-create-object size-l">
+					Придумайте название для вашего объекта 
+					по которому вы планируете всести учет. 
+					Наприме: дом, автомобиль, хобби.					
+				</div>
+		    </div>
+
+		    <div>
+		    	<hr class="drop-line-form">
+		    </div>
+
+		    <div class="user-setting-header-bottom size-xl">
+		    	<span>Choise type</span>
+		    </div>
+		    
+		    <div class="form-radio-btn-container">
+			    
+				<div class="form-radio-btn size-xl">					
+
+					<input id="radio-income-object" type="radio" name="accounting_object[type_object_id]" value="2">
+					<label for="radio-income-object" id="radio-income-object-label" >income</label>
+				</div>
+
+				<div class="form-radio-btn size-xl">
+					<input id="radio-expense-object" type="radio" name="accounting_object[type_object_id]" value="1" checked>
+					<label for="radio-expense-object" id="radio-expense-object-label">expense</label>
+				</div>
+				 
+		    </div>
+
+		    <div>
+		    	<hr class="drop-line-form">
+		    </div>
+
+
+		    <div class="user-setting-header-bottom size-xl">
+		    	<span>Choise kind of</span>
+		    </div>
+
+		    <div class="form-select-container-object">
+		    	<div style="display: grid; place-items: center;">
+		    		<span>Вид объекта:</span>
+		    	</div>
+
+		    	<div>
+		    		<%= select('select_kind', :kind_of_object_id, select_kind_of_object.collect { |p| [p.name_kind, p.id] })  %>
+		    	</div>
+		    </div>
+
+		    <div>
+		    	<hr class="drop-line-form">
+		    </div>
+
+		    <div class="form-container-field-object m-bot-xl m-top-m">
+		    	<%= f.submit(create_or_update(accounting_object), class: 'btn-create-object') %>
+		    </div>
+
+		    <% if accounting_object.persisted? then  %>
+		    	<div class="form-container-field-object m-bot-xl m-top-m">
+					<%= button_to('delete', "/accounting_object/#{accounting_object.id}", method: :delete, class: 'btn-delete-object')  %>
+		    	</div>
+		    <% end %>
+
+		<% end %>
+	</div>		
+</div>		

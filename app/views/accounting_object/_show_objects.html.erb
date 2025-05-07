@@ -1,0 +1,37 @@
+<article class="content-container-main-center">
+	<section class="content-section-table">
+
+		<div class="user-setting-header size-xxl">
+			<span>list user objects</span>
+		</div>
+		
+		<table class="accounting-objects-table">
+			<thead>
+				<tr>
+					<th>name_object</th>
+					<th>type_object_id</th>
+					<th>kind_of_object_id</th>
+					<th>edit</th>
+					<th style="text-align: center;">add record</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% accounting_objects.each do |acc_obj|  %>
+				<tr>
+					<td><%= acc_obj.name_object  %></td>
+					<td class="type-object-id-<%= acc_obj.type_object_id%>"><%= acc_obj.type_object.name_type  %></td>
+					<td><%= acc_obj.kind_of_object.name_kind  %></td>
+					<td><%= link_to('edit', edit_accounting_object_path(acc_obj.id))  %></td>
+					<td style="text-align: center;"><%= link_to('record', '#')  %></td>
+				</tr>	
+				<% end %>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="5">table foot</td>
+				</tr>
+			</tfoot>			
+		</table>
+
+	</section>
+</article>

@@ -1,11 +1,27 @@
 class UsersController < ApplicationController
 
+  before_action(:require_authentication, only: %i[show edit update destroy])
+  #before_action(:no_require_authentication, only: %i[new create])
+
 	def index
     @users = User.all
+    render('example_page')
   end
 
+  def new    
+    @user = User.new
+  end
+
+  def show
+    
+    @user = User.find_by(remember_token_digest: session[:user_id])
+    @accounting_objects = @user.accounting_object #['test1', 'test2', 'test3', 'test4']#@user.accounting_object
+  end
+
+
   def create
-=begin
+
+    #render(plain: params)
 
     @user = User.new(user_params)
     #r_connect = Redis.new(db: 0)
@@ -15,7 +31,7 @@ class UsersController < ApplicationController
 
     if @user.save then
       @user.remember_me
-      r_connect.setex(@user.remember_token, 1000 ,@user.attributes.to_json)
+      #r_connect.setex(@user.remember_token, 1000 ,@user.attributes.to_json)
 
       session[:user_id] = @user.remember_token
       redirect_to(root_path)
@@ -24,24 +40,42 @@ class UsersController < ApplicationController
     else
       render :new
     end
+=begin
 =end
 
   end
 
-  def new
-    @user = User.new
+
+
+  def edit
+    @user = User.find_by(remember_token_digest: session[:user_id])
   end
+
+  def update
+    user = User.find_by(remember_token_digest: session[:user_id])
+
+    if user.update(user_params) then
+      flash['message'] = 'Your update profile'
+      redirect_to(root_path)
+    else
+      flash['message'] = t('flash.danger')
+      render(:edit)
+    end
+  end
+
+  def destroy
+
+  end
+
+
+
+
+
 
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
-  end
-
-  def user_exits
-    if user_signed_in? then
-      redirect_to(root_path)
-    end
+    params.require(:user).permit(:user_name, :email, :password, :password_confirmation)
   end
  
 end

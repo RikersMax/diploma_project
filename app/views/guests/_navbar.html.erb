@@ -11,10 +11,8 @@
 			<li>Обо всем</li>
 		</ul>
 		
-		<div class="guest-menu-sign">
-			<%= link_to('Вход', new_session_path, class: 'sign-in') %>
-			<%= link_to('Регистрация', '#', class: 'sign-up') %>			
-		</div>
+		<%= render(partial: 'shared/dropdown_menu') %>
+		
 	</section>
 </article>
 
@@ -34,7 +32,9 @@
 			</div>
 
 			<div class="guest-conteiner-content-btn">
-				<%= link_to('Начать учет', '#', class: 'guest-content-btn')  %>
+				<%= link_to('Начать учет', 
+				(current_user ? accounting_object_index_path : new_session_path), 
+				class: 'guest-content-btn')  %>
 			</div>
 
 		</div>

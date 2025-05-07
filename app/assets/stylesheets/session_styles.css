@@ -4,6 +4,7 @@
 	align-items: center;
 	min-width: 100%;
 	height: 100%;
+	margin: 1em 0em;
 }
 
 .content-form-container-create-session {
@@ -14,4 +15,5 @@
 	min-height: auto;
 	border-radius: 1em;
 	padding: 1em 5%;
+	margin: 1em 0em;
 }

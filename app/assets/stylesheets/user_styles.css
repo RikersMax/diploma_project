@@ -1,0 +1,110 @@
+
+
+.user-container-setting {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;	
+	background-color: #93DAFB;
+	width: auto;
+	min-height: 50%;
+	border-radius: 1em;
+	padding: 1em 2em;
+	margin-bottom: 2em;
+}
+
+.user-setting-header {
+	display: flex;
+	justify-content: center;
+	gap: 1em;
+	margin-bottom: 1em;
+	font-weight: bold;	
+}
+
+.user-setting-header-bottom {
+	display: flex;
+	justify-content: center;
+	gap: 1em;	
+}
+
+.user-setting-row {
+	display: flex;
+	justify-content: space-between;
+	gap: 1em;
+	margin-bottom: 1em;
+}
+
+.user-setting-btn {
+	margin-top: 1em;
+	display: flex;
+	justify-content: center;
+}
+
+.user-setting-btn a {	
+	color: #000;
+	text-decoration: none;
+	border: 1px solid;
+	border-radius: 0.7em;
+	padding: 5px 10px;	
+	background-color: #93DAFB;
+}
+
+.user-container-setting-objects {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;	
+	background-color: #93DAFB;
+	width: auto%;
+	min-height: 50%;
+	border-radius: 1em;
+	padding: 1em 2em;
+	margin-bottom: 2em;
+}
+
+.user-setting-row-line {
+	background-color: white;
+	outline: none;
+	border: none;
+	border-radius: 0.7em;
+	padding: 0em 1em;
+}
+
+.container-setting-objects {
+    display: flex;
+    flex-wrap: wrap; /* Позволяет элементам переноситься на новую строку */
+    justify-content: center; /* Выравниваем карточки по центру контейнера */    
+    gap: 1em;
+}
+
+/* Стилизация самих карточек */
+.card {
+	display: block;
+    width: 40%; /* Две колонки с отступом между ними */
+    margin-bottom: 20px; /* Отступ снизу для промежутков между строками */
+    padding: 10px;
+    border: 1px solid #000;
+    box-sizing: border-box;
+    text-decoration: none;
+    color: #000;
+}
+
+.card-object-container-name-setting {
+	margin-bottom: 1em;
+}
+
+.card-name-object-setting {
+	margin-bottom: 1em;
+	font-weight: bold;
+}
+
+.card-description-object-setting {
+	display: flex;
+	flex-direction: column;
+}
+
+.card-description-expense {
+	background-color: #FF7070;
+}
+
+.card-description-income {
+	background-color: #87EF94;
+}

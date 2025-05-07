@@ -13,32 +13,7 @@
 
 		</ul>
 
-		<div class="nav-bar-menu-sign">
-			<% if user_signed_in? %>
-				
-				<div class="nav-bar-image-ball">
-					<%= image_tag('bell-solid', class: 'nav-bar-img-user')  %>
-				</div>
-
-				<details class="nav-bar-dropdown-user">
-				    <summary role="button">
-				      <%= image_tag('user-solid', class: 'nav-bar-img-user') %>
-				    </summary>
-				    <ul>
-				      <li><a href="#">accaunt</a></li>
-				      <li><%= button_to('Exit', "/session/#{session[:user_id]}", method: :delete)  %></li>				      
-				  </ul>
-				</details>
-
-			<% else %>
-
-				<div class="nav-bar-menu-sign">
-					<%= link_to('Вход', new_session_path, class: 'sign-in') %>
-					<%= link_to('Регистрация', '#', class: 'sign-up') %>			
-				</div>
-			
-			<% end %>
-		</div>
+		<%= render(partial: 'shared/dropdown_menu') %>
 
 	</section>
 </article>

@@ -7,13 +7,13 @@ class SessionController < ApplicationController
     @user = User.new
   end
 
-  def create    
-    
-    @user = User.find_by(email: session_params[:email])
-    
+  def create
+   #render(plain: params)
+    @user = User.find_by(email: session_params[:email])    
 
     if @user.present? && @user.authenticate(session_params[:password])
       @user.remember_me
+      
       #user_attributes = @user.attributes.transform_keys(&:to_sym).slice(:id, :name, :email)
       #user_attributes = @user.attributes.slice('id', 'name', 'email', 'remember_token_digest')
       #r_connect.setex(@user.remember_token, 1000 , user_attributes.to_json)
@@ -22,8 +22,11 @@ class SessionController < ApplicationController
       redirect_to(root_path)
     else
       flash[:message] = 'message from session#creat'
+      @user = User.new
       render(:new)
     end
+=begin  
+=end    
   end
 
   def destroy

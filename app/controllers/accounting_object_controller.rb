@@ -1,37 +1,115 @@
 class AccountingObjectController < ApplicationController
-  def index
-    session[:user_id] = 1
-    @user = User.find_by(id: 1)
-    #redirect_to(controller: 'guests', action: 'index')
-    @accounting_object = AccountingObject.find_by(user_id: 1)
-    @select_kind_of_object = KindOfObject.all
 
+  #before_action(:require_authentication)
+
+  def index
+    user = User.find_by(remember_token_digest: session[:user_id])
+    @accounting_objects = user.accounting_object 
+
+    
     @accounting_object_new = AccountingObject.new
+    @select_kind_of_object = KindOfObject.all
   end
 
   def new
-    session[:user_id] = 1
-    @user = User.find_by(id: 1)
-    #redirect_to(controller: 'guests', action: 'index')
-    @accounting_object = AccountingObject.find_by(user_id: 1)
+    
+    @accounting_object_new = AccountingObject.new
     @select_kind_of_object = KindOfObject.all
 
-    @accounting_object_new = AccountingObject.new
   end
 
   def create
-    render(plain: params)
+    user = User.find_by(remember_token_digest: session[:user_id])
+    params_create = accounting_object_params.merge!(user_id: user.id)
+
+    acc_object = AccountingObject.new(params_create)
+
+    #render(plain: acc_object.errors.full_messages)
+    #render(plain: params)
+
+    if acc_object.save then
+      flash[:message] = 'acc_object created'
+      redirect_to(root_path)
+    else
+      @accounting_object_new = AccountingObject.new
+      @select_kind_of_object = KindOfObject.all
+
+      flash[:message] = 'error to create acc_object'
+      render(:new)
+    end
+    
   end
 
   def edit
+    user = User.find_by(remember_token_digest: session[:user_id])
+    acc_object = AccountingObject.find(params[:id])
+
+
+    if user.id == acc_object.user_id then
+      @select_kind_of_object = KindOfObject.all
+      @acc_object_user = acc_object
+    else      
+      flash[:message] = 'error from accounting_object#edit'
+      redirect_to(root_path)
+    end
   end
 
-  def show
+
+  def update
+
+    user = User.find_by(remember_token_digest: session[:user_id])
+    acc_object = AccountingObject.find(params[:id])
+
+    if user.id == acc_object.user_id then
+
+      if acc_object.update(accounting_object_params) then
+        flash[:message] = 'acc_object created'
+        redirect_to(root_path)
+      else
+        @accounting_object_new = AccountingObject.new
+        @select_kind_of_object = KindOfObject.all
+
+        flash[:message] = '2 error from accounting_object#update'
+        render(:new)
+      end
+
+    else      
+      
+      flash[:message] = '1 error from accounting_object#update'
+      redirect_to(root_path)
+    end
+
   end
 
   def destroy
+    #render(plain: params) 
+    
+    user = User.find_by(remember_token_digest: session[:user_id])
+    acc_object = AccountingObject.find(params[:id])
+
+    if user.id == acc_object.user_id then
+      if acc_object.destroy then
+        flash[:message] = 'acc_object delete'
+        redirect_to(root_path)
+      else
+        flash[:message] = '2 error from accounting_object#delete'
+        render(:new)
+      end
+      
+    else
+      flash[:message] = '1 error from accounting_object#delete'
+      redirect_to(root_path)
+    end  
   end
 
-  def update
+  private
+
+  def accounting_object_params
+    cleared_params = {}
+
+    cleared_params.merge!(params.require(:accounting_object).permit(:name_object, :type_object_id))
+    cleared_params.merge!(params.require(:select_kind).permit(:kind_of_object_id))
+
   end
+
 end

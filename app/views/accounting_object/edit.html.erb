@@ -1,2 +1,6 @@
-<h1>AccountingObject#edit</h1>
-<p>Find me in app/views/accounting_object/edit.html.erb</p>
+<%# edit  %>
+<%= render(partial: 'form', locals: {
+	accounting_object: @acc_object_user, 
+	select_kind_of_object: @select_kind_of_object, 
+	url: accounting_object_path(@acc_object_user.id),
+	method_action: :patch}) %>

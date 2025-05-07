@@ -1,0 +1,27 @@
+<div class="nav-bar-menu-sign">
+	<% if user_signed_in? %>
+		
+		<div class="nav-bar-image-ball">
+			<%= image_tag('bell-solid', class: 'nav-bar-img-user')  %>
+		</div>
+
+		<details class="nav-bar-dropdown-user">
+		    <summary role="button">
+		      <%= image_tag('user-solid', class: 'nav-bar-img-user') %>
+		    </summary>
+		    <ul>
+			    <li><%= link_to(current_user.user_name, '#', class: 'drop-down-user-name size-xl')  %></li>
+			    <li><%= link_to('Accaunt', user_path('user')) %></li>
+			    <li><%= button_to('Exit', "/session/#{session[:user_id]}", method: :delete)  %></li>				      
+		  </ul>
+		</details>
+
+	<% else %>
+
+		<div class="nav-bar-menu-sign">
+			<%= link_to('Вход', new_session_path, class: 'sign-in') %>
+			<%= link_to('Регистрация', new_user_path, class: 'sign-up') %>			
+		</div>
+	
+	<% end %>
+</div>

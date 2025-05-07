@@ -45,6 +45,10 @@
 	margin-top: 1.5em;
 }
 
+.m-top-xl {
+	margin-top: 1.75em;
+}
+
 .m-bot-s {
 	margin-bottom: 0.5em;
 }
@@ -55,6 +59,10 @@
 
 .m-bot-l {
 	margin-bottom: 1.5em;
+}
+
+.m-bot-xl {
+	margin-bottom: 1.75em;
 }
 
 /*padding*/
@@ -71,6 +79,10 @@
 	padding-top: 1.5em;
 }
 
+.p-top-xl {
+	padding-top: 1.75em;
+}
+
 .p-bot-s {
 	padding-bottom: 0.5em;
 }
@@ -81,4 +93,8 @@
 
 .p-bot-l {
 	padding-bottom: 1.5em;
+}
+
+.p-bot-xl {
+	padding-bottom: 1.75em;
 }
