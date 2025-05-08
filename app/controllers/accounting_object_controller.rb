@@ -5,16 +5,26 @@ class AccountingObjectController < ApplicationController
   def index
     user = User.find_by(remember_token_digest: session[:user_id])
     @accounting_objects = user.accounting_object 
-
-    
+  
     @accounting_object_new = AccountingObject.new
     @select_kind_of_object = KindOfObject.all
   end
 
   def new
-    
     @accounting_object_new = AccountingObject.new
     @select_kind_of_object = KindOfObject.all
+  end
+
+  def show
+    user = User.find_by(remember_token_digest: session[:user_id])    
+
+    if user.accounting_object_ids.include?(params[:id].to_i) then
+      @acc_object = AccountingObject.find(params[:id])
+      render(:show)
+    else
+      flash[:message] = '1 error from accounting_object#show'
+      redirect_to(root_path)
+    end
 
   end
 
@@ -23,9 +33,6 @@ class AccountingObjectController < ApplicationController
     params_create = accounting_object_params.merge!(user_id: user.id)
 
     acc_object = AccountingObject.new(params_create)
-
-    #render(plain: acc_object.errors.full_messages)
-    #render(plain: params)
 
     if acc_object.save then
       flash[:message] = 'acc_object created'
@@ -37,7 +44,6 @@ class AccountingObjectController < ApplicationController
       flash[:message] = 'error to create acc_object'
       render(:new)
     end
-    
   end
 
   def edit
@@ -49,14 +55,13 @@ class AccountingObjectController < ApplicationController
       @select_kind_of_object = KindOfObject.all
       @acc_object_user = acc_object
     else      
-      flash[:message] = 'error from accounting_object#edit'
+      flash[:message] = '1 error from accounting_object#edit'
       redirect_to(root_path)
     end
   end
 
 
   def update
-
     user = User.find_by(remember_token_digest: session[:user_id])
     acc_object = AccountingObject.find(params[:id])
 
@@ -73,8 +78,7 @@ class AccountingObjectController < ApplicationController
         render(:new)
       end
 
-    else      
-      
+    else
       flash[:message] = '1 error from accounting_object#update'
       redirect_to(root_path)
     end
@@ -82,12 +86,11 @@ class AccountingObjectController < ApplicationController
   end
 
   def destroy
-    #render(plain: params) 
-    
     user = User.find_by(remember_token_digest: session[:user_id])
     acc_object = AccountingObject.find(params[:id])
 
     if user.id == acc_object.user_id then
+
       if acc_object.destroy then
         flash[:message] = 'acc_object delete'
         redirect_to(root_path)
@@ -109,7 +112,6 @@ class AccountingObjectController < ApplicationController
 
     cleared_params.merge!(params.require(:accounting_object).permit(:name_object, :type_object_id))
     cleared_params.merge!(params.require(:select_kind).permit(:kind_of_object_id))
-
   end
 
 end

@@ -62,6 +62,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_04_23_184430) do
     t.string "user_name", limit: 64
     t.string "email", limit: 254
     t.string "password_digest"
+    t.string "remember_token_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email"

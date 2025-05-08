@@ -1,0 +1,119 @@
+<article class="content-container-main-center">
+	<section class="content-section">
+		<div class="show-main-container-accounting">
+			<div class="user-setting-header size-xxl">
+				<span><%= @acc_object.name_object %></span>
+			</div>
+
+			<div class="show-container-accounting">					
+				<div class="show-container-accounting-section-left">
+					
+					<%= form_with(url: '#',method: 'POST', data: { turbo: false }) do |f| %>
+					<%# f.fields_for :user do |u|  %>
+
+						<div class="show-accounting-date-fields">								
+							<%= f.label(:date_start)  %>
+							<%= f.date_field(:date_start,value: @acc_object.created_at.to_date, required: true) %>
+						</div>
+
+						<div class="show-accounting-date-fields">
+							<%= f.label(:date_end)  %>
+							<%= f.date_field(:date_end,value: Time.now.to_date, required: true) %>
+						</div>
+
+						<div style="text-align: center;">
+							<%= f.submit('show', class: 'btn-date-show size-l m-top-s')  %>
+						</div>
+
+					<%# end %>
+					<% end %>
+					
+					<div class="show-accounting-info-fields">
+						<div>
+							<span>type object</span>
+						</div>
+						<div>
+							<span class="show-accoutnting-type-object-<%= @acc_object.type_object_id%>"><%= @acc_object.type_object.name_type %></span>
+						</div>
+					</div>
+
+					<div class="select-data-view-container">
+						<div>
+							<span class="select-data-view-btn size-xl" id="btn-to-table">to table</span>
+						</div>
+
+						<div>
+							<span class="select-data-view-btn size-xl" id="btn-to-chart">to chart</span>
+						</div>
+					</div>
+
+					<div class="select-data-view-container user-actions-container" >
+						<div>
+							<%= link_to('add record', '#', class: 'btn-user-action')  %>
+						</div>
+
+						<div>
+							<%= link_to('add category', '#', class: 'btn-user-action')  %>
+						</div>
+
+						<div>
+							<%= link_to('report', '#', class: 'btn-user-action')  %>
+						</div>
+					</div>
+
+
+
+				</div>
+
+				<div class="show-container-accounting-section-reight">
+					<div id="table-content">
+						
+						<%= render(partial: 'show_table')  %>
+					</div>
+
+					<div id="chart-content" >
+						
+						<%= render(partial: 'show_chart')  %>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</article>
+
+
+<script>
+  // Получаем существующие кнопки
+  const btnToTable = document.getElementById('btn-to-table');
+  const btnToChart = document.getElementById('btn-to-chart');
+
+  // Получаем существующие контентные блоки
+  const tableContent = document.getElementById('table-content');
+  const chartContent = document.getElementById('chart-content');
+
+  // Обработчик кликов по кнопкам
+  function handleButtonClick(event) {
+    const clickedBtn = event.target;
+
+    // Удаляем активный класс у обеих кнопок
+    [btnToTable, btnToChart].forEach(btn => btn.classList.remove('active-button'));
+
+    // Устанавливаем активный класс на выбранную кнопку
+    clickedBtn.classList.add('active-button');
+
+    // Переключаем видимость контента
+    if (clickedBtn === btnToTable) {
+      chartContent.classList.remove('active-content');
+      tableContent.classList.add('active-content');
+    } else if (clickedBtn === btnToChart) {
+      tableContent.classList.remove('active-content');
+      chartContent.classList.add('active-content');
+    }
+  }
+
+  // Назначаем обработчики событий на обе кнопки
+  btnToTable.addEventListener('click', handleButtonClick);
+  btnToChart.addEventListener('click', handleButtonClick);
+</script>
+

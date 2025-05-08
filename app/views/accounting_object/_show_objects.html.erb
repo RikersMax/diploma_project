@@ -12,6 +12,7 @@
 					<th>type_object_id</th>
 					<th>kind_of_object_id</th>
 					<th>edit</th>
+					<th>show</th>
 					<th style="text-align: center;">add record</th>
 				</tr>
 			</thead>
@@ -22,13 +23,14 @@
 					<td class="type-object-id-<%= acc_obj.type_object_id%>"><%= acc_obj.type_object.name_type  %></td>
 					<td><%= acc_obj.kind_of_object.name_kind  %></td>
 					<td><%= link_to('edit', edit_accounting_object_path(acc_obj.id))  %></td>
+					<td><%= link_to('show', accounting_object_path(acc_obj.id))  %></td>
 					<td style="text-align: center;"><%= link_to('record', '#')  %></td>
 				</tr>	
 				<% end %>
 			</tbody>
 			<tfoot>
 				<tr>
-					<td colspan="5">table foot</td>
+					<td colspan="6">table foot</td>
 				</tr>
 			</tfoot>			
 		</table>
