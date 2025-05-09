@@ -1,5 +1,40 @@
 
+
+
+
 /*form container*/
+
+.show-container-category-edit {
+	display: flex;
+	justify-content: center;
+	gap: 1em;
+
+}
+
+.show-container-category-section-edit {
+	display: flex;
+	flex-direction: column;
+	border: 1px solid;
+	width: auto;
+	padding: 1em;
+	height: 100%;
+	background-color: #93DAFB;
+}
+
+.show-container-category-section-left {
+	display: flex;
+	flex-direction: column;
+	border: 1px solid;
+	width: 20%;
+	padding: 1em;
+	height: 100%;	
+}
+
+.show-container-category-section-reight {
+	border: 1px solid;
+	width: 80%;
+}
+
 .category-header-container {
 	display: flex;
 	flex-direction: column;
@@ -33,7 +68,7 @@
 /* btn raido */
 
 .colors-palette-container {
-	padding: 1em;
+	padding: 2em;
 }
 
 .form-radio-btn-container {
@@ -42,8 +77,6 @@
     justify-content: center; /* Выравниваем по центру */
 
 }
-
-
 
 .form-radio-btn-category {
 	display: inline-block;	
@@ -98,43 +131,11 @@
 	background-color: #000000;
 }
 
-
-
 /* Checked */
 
 .form-radio-btn-category input[type=radio]:checked + label {
 	border: 2px solid #159d28;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -189,7 +190,6 @@
     text-align: center;    
 }
 
-/* Подвал таблицы */
 .accounting-category-table tfoot td {
     background-color: #CCEFFF;
     color: #000;
@@ -197,6 +197,23 @@
     text-align: center;
     font-style: italic;
 }
+
+.accounting-category-table tbody .btn-delete-category {
+	background-color: #FF7070;
+	display: inline-block;
+    padding: 4px 8px;
+    margin-top: 4px;    
+    color: #000;
+    text-decoration: none;
+    border-radius: 4px;
+    border: none;
+    font-size: 1em;
+}
+
+.accounting-category-table tbody .btn-delete-category:hover {
+	background-color: #ff4d4d;
+}
+
 
 /* Кнопка редактирования */
 .accounting-category-table a {
@@ -207,6 +224,7 @@
     color: #000;
     text-decoration: none;
     border-radius: 4px;
+    font-size: 1em;
 }
 
 .accounting-category-table a:hover {
@@ -230,3 +248,4 @@
     height: 2em;            
     text-align: center;
 }
+

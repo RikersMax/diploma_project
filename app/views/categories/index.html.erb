@@ -11,13 +11,13 @@
 			</div>
 
 			<div class="show-container-accounting">					
-				<div class="show-container-accounting-section-left">
+				<div class="show-container-category-section-left">
 
-					<%= render(partial: 'form', locals: {category_model: @category_new })  %>
+					<%= render(partial: 'form', locals: {category_model: @category_new, method_action: 'POST'})  %>
 
 				</div>
 
-				<div class="show-container-accounting-section-reight">
+				<div class="show-container-category-section-reight">
 					<%= render(partial: 'show_table', locals: {category_list: @category_list})  %>
 				</div>
 			</div>

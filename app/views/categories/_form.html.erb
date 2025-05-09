@@ -2,7 +2,7 @@
 	<span><%= category_model.persisted? ? 'update category' : 'create category' %></span>
 </div>
 
-<%= form_with(model: category_model, url: categories_path, method: 'POST', data: { turbo: false }) do |f| %>
+<%= form_with(model: category_model, method: method_action, data: { turbo: false }) do |f| %>
 
 	<div class="show-categories-date-fields ">								
 		<%= f.label(:name_category, 'name category')  %>
@@ -10,7 +10,7 @@
 	</div>
 
 	<div hidden>
-		<%= f.hidden_field(:accounting_object_id, value: @category_new.accounting_object_id)  %>
+		<%= f.hidden_field(:accounting_object_id, value: @acc_object_encript)  %>
 	</div>						
 
 	<div class="colors-palette-container">
@@ -36,7 +36,6 @@
 				<label for="radio-category-color-3" id="radio-category-color-3-label"></label>
 			</div>
 	    </div>
-
 
 	    <div class="form-radio-btn-container">
 			<div class="form-radio-btn-category">
@@ -76,7 +75,7 @@
 
 
 	<div style="text-align: center;">
-		<%= f.submit('create', class: 'btn-date-show size-l m-top-s')  %>
+		<%= f.submit(category_model.persisted? ? 'update' : 'create', class: 'btn-date-show size-xl')  %>
 	</div>
 
 <% end %>

@@ -20,6 +20,8 @@ class AccountingObjectController < ApplicationController
 
     if user.accounting_object_ids.include?(params[:id].to_i) then
       @acc_object = AccountingObject.find(params[:id])
+      @acc_object_encript =  Base64.encode64(@acc_object.id.to_s)
+
       #session[:accounting_object_id] = request.params[@acc_object.id]
       render(:show)
     else

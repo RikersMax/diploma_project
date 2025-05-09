@@ -1,5 +1,9 @@
 <article class="content-container-main-center">
 	<section class="content-section">
-		<p>edit</p>
+		<div class="show-container-category-edit">					
+			<div class="show-container-category-section-edit">
+				<%= render(partial: 'form', locals: {category_model: @category, method_action: 'PATCH' })  %>
+			</div>
+		</div>
 	</section>
 </article>		
