@@ -1,0 +1,29 @@
+<div id="container-table-categories">
+	<table class="accounting-category-table">
+		<thead>
+			<tr>
+				<th>number</th>
+				<th>name_category</th>
+				<th>color_category</th>
+				<th>edit</th>
+				<th>delte</th>			
+			</tr>
+		</thead>
+		<tbody>
+			<% category_list.each_with_index do |category, i|  %>
+			<tr>
+				<td><%= i + 1 %></td>
+				<td><%= category.name_category %></td>
+				<td class="color_category"><div style="background-color: <%=category.color_category  %>;"></div></td>
+				<td><%= link_to('edit', '#')  %></td>
+				<td><%= link_to('show', '#')  %></td>
+			</tr>	
+			<% end %>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="5">table foot</td>
+			</tr>
+		</tfoot>			
+	</table>
+</div>

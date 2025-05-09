@@ -53,7 +53,7 @@
 						</div>
 
 						<div>
-							<%= link_to('add category', '#', class: 'btn-user-action')  %>
+							<%= link_to('add category', categories_path(accounting_object_id: @acc_object.id), class: 'btn-user-action')  %>
 						</div>
 
 						<div>
@@ -95,6 +95,7 @@
   // Обработчик кликов по кнопкам
   function handleButtonClick(event) {
     const clickedBtn = event.target;
+
 
     // Удаляем активный класс у обеих кнопок
     [btnToTable, btnToChart].forEach(btn => btn.classList.remove('active-button'));

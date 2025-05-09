@@ -1,6 +1,6 @@
 class AccountingObjectController < ApplicationController
 
-  #before_action(:require_authentication)
+  before_action(:require_authentication)
 
   def index
     user = User.find_by(remember_token_digest: session[:user_id])
@@ -20,6 +20,7 @@ class AccountingObjectController < ApplicationController
 
     if user.accounting_object_ids.include?(params[:id].to_i) then
       @acc_object = AccountingObject.find(params[:id])
+      #session[:accounting_object_id] = request.params[@acc_object.id]
       render(:show)
     else
       flash[:message] = '1 error from accounting_object#show'

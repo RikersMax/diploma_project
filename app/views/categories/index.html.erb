@@ -1,0 +1,26 @@
+
+<article class="content-container-main-center">
+	<section class="content-section">		
+
+		<div class="show-main-container-accounting">
+			<div class="category-header-container">
+				<span class="category-header-name size-xxl"><%= @acc_object.name_object %></span>
+				<div>
+					<span class="show-category-type-object-<%= @acc_object.type_object_id%>"><%= @acc_object.type_object.name_type %></span>
+				</div>
+			</div>
+
+			<div class="show-container-accounting">					
+				<div class="show-container-accounting-section-left">
+
+					<%= render(partial: 'form', locals: {category_model: @category_new })  %>
+
+				</div>
+
+				<div class="show-container-accounting-section-reight">
+					<%= render(partial: 'show_table', locals: {category_list: @category_list})  %>
+				</div>
+			</div>
+		</div>
+	</section>
+</article>	

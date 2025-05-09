@@ -1,0 +1,82 @@
+<div class="user-setting-header size-xl">
+	<span><%= category_model.persisted? ? 'update category' : 'create category' %></span>
+</div>
+
+<%= form_with(model: category_model, url: categories_path, method: 'POST', data: { turbo: false }) do |f| %>
+
+	<div class="show-categories-date-fields ">								
+		<%= f.label(:name_category, 'name category')  %>
+		<%= f.text_field(:name_category,placeholder: 'Категория' ,required: true) %>
+	</div>
+
+	<div hidden>
+		<%= f.hidden_field(:accounting_object_id, value: @category_new.accounting_object_id)  %>
+	</div>						
+
+	<div class="colors-palette-container">
+
+		<div style="text-align: center;">
+			<span>choice color</span>
+		</div>
+		
+		<div class="form-radio-btn-container">
+
+			<div class="form-radio-btn-category">
+				<input id="radio-category-color-1" type="radio" name="category[color_category]" value="#93DAFB;" checked>
+				<label for="radio-category-color-1" id="radio-category-color-1-label" ></label>
+			</div>
+
+			<div class="form-radio-btn-category">
+				<input id="radio-category-color-2" type="radio" name="category[color_category]" value="#ffb3b3;">
+				<label for="radio-category-color-2" id="radio-category-color-2-label" ></label>
+			</div>
+
+			<div class="form-radio-btn-category">
+				<input id="radio-category-color-3" type="radio" name="category[color_category]" value="#dd99ff;">
+				<label for="radio-category-color-3" id="radio-category-color-3-label"></label>
+			</div>
+	    </div>
+
+
+	    <div class="form-radio-btn-container">
+			<div class="form-radio-btn-category">
+				<input id="radio-category-color-4" type="radio" name="category[color_category]" value="#ffccff;">
+				<label for="radio-category-color-4" id="radio-category-color-4-label" ></label>
+			</div>
+
+			<div class="form-radio-btn-category">
+				<input id="radio-category-color-5" type="radio" name="category[color_category]" value="#b3ffff;">
+				<label for="radio-category-color-5" id="radio-category-color-5-label" ></label>
+			</div>
+
+			<div class="form-radio-btn-category">
+				<input id="radio-category-color-6" type="radio" name="category[color_category]" value="#99ff99;">
+				<label for="radio-category-color-6" id="radio-category-color-6-label"></label>
+			</div>
+		</div>
+
+		<div class="form-radio-btn-container">
+			<div class="form-radio-btn-category">
+				<input id="radio-category-color-7" type="radio" name="category[color_category]" value="#ffaa80;">
+				<label for="radio-category-color-7" id="radio-category-color-7-label" ></label>
+			</div>
+
+			<div class="form-radio-btn-category">
+				<input id="radio-category-color-8" type="radio" name="category[color_category]" value="#80ffcc;">
+				<label for="radio-category-color-8" id="radio-category-color-8-label" ></label>
+			</div>
+
+			<div class="form-radio-btn-category">
+				<input id="radio-category-color-9" type="radio" name="category[color_category]" value="#000000;">
+				<label for="radio-category-color-9" id="radio-category-color-9-label"></label>
+			</div>
+		</div>
+
+	</div>
+
+
+	<div style="text-align: center;">
+		<%= f.submit('create', class: 'btn-date-show size-l m-top-s')  %>
+	</div>
+
+<% end %>

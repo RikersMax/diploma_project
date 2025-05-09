@@ -25,26 +25,13 @@ class SessionController < ApplicationController
       @user = User.new
       render(:new)
     end
-=begin  
-=end    
+  
   end
 
-  def destroy
-
-    #render(plain: params)
-
-    #user = User.find_by(remember_token_digest: params[:id])
-    #render(plain: user.inspect)
-=begin
-
-    #debugger 
-    #r_connect.del(current_user.remember_token)
-    #r_delete_remember_token_user
-=end  
+  def destroy 
     user_compliete_session
     redirect_to(root_path)    
   end
-
 
   private
 

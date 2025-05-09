@@ -1,0 +1,232 @@
+
+/*form container*/
+.category-header-container {
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	margin-bottom: 1em;
+	gap: 0.5em;
+	padding-top: 1em;
+
+}
+
+.category-header-name {
+	font-weight: bold;
+}
+
+.show-categories-date-fields {
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	margin: 1em 0em;
+}
+
+.show-categories-date-fields input[type="text"] {
+	border: none;
+	border-radius: 0.5em;
+	margin: 0.5em 0em;
+	padding: 0.5em 1em;
+	font-size: 1em;
+}
+
+
+/* btn raido */
+
+.colors-palette-container {
+	padding: 1em;
+}
+
+.form-radio-btn-container {
+	display: flex;
+	flex-wrap: wrap; /* Перенос элементов */
+    justify-content: center; /* Выравниваем по центру */
+
+}
+
+
+
+.form-radio-btn-category {
+	display: inline-block;	
+}
+.form-radio-btn-category input[type=radio] {
+	display: none;
+}
+.form-radio-btn-category label {
+	display: inline-block;
+	cursor: pointer;
+	line-height: 34px;
+	border: 1px solid #999;
+	user-select: none;
+	width: 3em;
+	height: 3em;
+}
+
+
+#radio-category-color-1-label {
+	background-color: #93DAFB;;
+}
+
+#radio-category-color-2-label {
+	background-color: #ffb3b3;
+}
+
+#radio-category-color-3-label {
+	background-color: #dd99ff;
+}
+
+#radio-category-color-4-label {
+	background-color: #ffccff;
+}
+
+#radio-category-color-5-label {
+	background-color: #b3ffff;
+}
+
+#radio-category-color-6-label {
+	background-color: #99ff99;
+}
+
+#radio-category-color-7-label {
+	background-color: #ffaa80;
+}
+
+#radio-category-color-8-label {
+	background-color: #80ffcc;
+}
+
+#radio-category-color-9-label {
+	background-color: #000000;
+}
+
+
+
+/* Checked */
+
+.form-radio-btn-category input[type=radio]:checked + label {
+	border: 2px solid #159d28;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*header name*/
+
+.show-category-type-object-1 {
+	display: inline-block;
+	background-color: #FF7070;
+	padding: 0.5em 1em;
+	border-radius: 0.5em;
+}
+
+.show-category-type-object-2 {
+	background-color: #87EF94;
+	padding: 0.5em 1em;
+	border-radius: 0.5em;
+}
+
+/* table  */
+
+#container-table-categories {
+	padding: 1em;
+}
+
+.accounting-category-table {
+    width: 100%;
+    border-collapse: collapse;    
+}
+
+
+.accounting-category-table thead th {
+    background-color: #93DAFB;
+    color: #000;
+    padding: 1em;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Строки тела таблицы */
+.accounting-category-table tbody tr:nth-child(even) {
+    background-color: #CCEFFF;
+}
+
+.accounting-category-table tbody tr:nth-child(odd) {
+    background-color: white;    
+}
+
+.accounting-category-table td,
+.accounting-category-table th {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+    text-align: center;    
+}
+
+/* Подвал таблицы */
+.accounting-category-table tfoot td {
+    background-color: #CCEFFF;
+    color: #000;
+    padding: 8px;
+    text-align: center;
+    font-style: italic;
+}
+
+/* Кнопка редактирования */
+.accounting-category-table a {
+    display: inline-block;
+    padding: 4px 8px;
+    margin-top: 4px;
+    background-color: #93DAFB;
+    color: #000;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+.accounting-category-table a:hover {
+    background-color: #7AD4F7;
+}
+
+.accounting-category-table .type-object-id-1 {
+    background-color: #ff4d4d;
+    color: #000;
+}
+
+.accounting-category-table .type-object-id-2 {
+    background-color: #159d28;
+    color: #000;
+}
+
+.color_category > div {
+	content: '';
+    display: inline-block;  
+    width: 2em;             
+    height: 2em;            
+    text-align: center;
+}
