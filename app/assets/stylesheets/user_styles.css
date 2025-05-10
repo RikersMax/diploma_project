@@ -70,16 +70,16 @@
 
 .container-setting-objects {
     display: flex;
-    flex-wrap: wrap; /* Позволяет элементам переноситься на новую строку */
-    justify-content: center; /* Выравниваем карточки по центру контейнера */    
+    flex-wrap: wrap; 
+    justify-content: center;    
     gap: 1em;
 }
 
 /* Стилизация самих карточек */
 .card {
 	display: block;
-    width: 40%; /* Две колонки с отступом между ними */
-    margin-bottom: 20px; /* Отступ снизу для промежутков между строками */
+/*    width: 40%; */
+    margin-bottom: 20px; 
     padding: 10px;
     border: 1px solid #000;
     box-sizing: border-box;

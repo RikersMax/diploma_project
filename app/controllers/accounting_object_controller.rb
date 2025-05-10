@@ -22,7 +22,6 @@ class AccountingObjectController < ApplicationController
       @acc_object = AccountingObject.find(params[:id])
       @acc_object_encript =  Base64.encode64(@acc_object.id.to_s)
 
-      #session[:accounting_object_id] = request.params[@acc_object.id]
       render(:show)
     else
       flash[:message] = '1 error from accounting_object#show'
@@ -39,7 +38,7 @@ class AccountingObjectController < ApplicationController
 
     if acc_object.save then
       flash[:message] = 'acc_object created'
-      redirect_to(root_path)
+      redirect_to(accounting_object_index_path)
     else
       @accounting_object_new = AccountingObject.new
       @select_kind_of_object = KindOfObject.all

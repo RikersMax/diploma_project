@@ -1,15 +1,15 @@
 <div class="content-section-create-object">
 	<div class="content-new-form-container-create-object">
-		
+		<div class="content-form-create-object">
+					
 		<%= form_with(model: accounting_object,						
-						url: url, 
-						class: 'content-form-create-object',
+						url: url,
 						method: method_action,
 						data: {turbo: false}
 						) do |f|  %>	
 
 			<div class="user-setting-header-bottom size-xl">
-		    	<h2>Create object</h2>
+		    	<h2><%= accounting_object.persisted? ? 'Edit object' : 'Create object'  %></h2>
 		    </div>								
 
 		    <div class="form-container-field-object">
@@ -69,16 +69,37 @@
 		    	<hr class="drop-line-form">
 		    </div>
 
-		    <div class="form-container-field-object m-bot-xl m-top-m">
+		    <div class="form-container-field-object m-top-xl m-bot-m">
 		    	<%= f.submit(create_or_update(accounting_object), class: 'btn-create-object') %>
 		    </div>
-
-		    <% if accounting_object.persisted? then  %>
-		    	<div class="form-container-field-object m-bot-xl m-top-m">
-					<%= button_to('delete', "/accounting_object/#{accounting_object.id}", method: :delete, class: 'btn-delete-object')  %>
-		    	</div>
-		    <% end %>
-
 		<% end %>
+
+	    <% if accounting_object.persisted? then  %>
+		<div>
+		    <hr class="drop-line-form">
+		</div>
+
+
+    	<div class="form-container-field-object m-bot-xl m-top-m">
+			<%= button_to('delete', 
+			"/accounting_object/#{accounting_object.id}", 
+			method: :delete, 
+			class: 'btn-delete-object', 
+			id: 'delete-button'
+			)  %>
+    	</div>
+	    <% end %>
+	    </div>
 	</div>		
 </div>		
+
+
+<script>
+    document.getElementById("delete-button").addEventListener("click", function(event){
+      event.preventDefault(); // Предотвращаем стандартное поведение отправки формы
+      
+      if(confirm("Вы действительно хотите удалить этот объект?")) {
+        this.form.submit(); // Отправляем форму, если пользователь подтвердил удаление
+      }
+    });
+</script>
