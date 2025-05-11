@@ -4,6 +4,18 @@ class User < ApplicationRecord
 	
 	has_many :accounting_object
 
+  validates(:user_name, {presence: true, length: {mi8nimum: 4, maximum: 64 }})
+  validates(:email, {
+    presence: true, 
+    uniqueness: true, 
+    format: { with: URI::MailTo::EMAIL_REGEXP },
+    length: { maximum: 254}
+  })
+  validates(:password_digest, {length: { minimum: 3, maximum: 20 }, confirmation: true, allow_blank: true})  
+  # проверяет идентиччность полей password и password_confirmation
+  # allow_blank: true -- чтобы при изменении профиля поле с паролем было пустым и из-за этого небыло изменеий пароля
+
+
 	has_secure_password
 
   def remember_me
