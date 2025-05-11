@@ -18,9 +18,8 @@
 				<td><%= link_to('edit', edit_category_path(id: Base64.encode64(category.id.to_s), accounting_object_id: @acc_object_encript)) %></td>
 				<td><%= button_to('delete', category, 
 				{method: :delete,
-				class: 'btn-delete-category', 
-				params: {accounting_object_id: @acc_object_encript},
-				data: { turbo_confirm: "Are you sure?"} 				
+				class: 'btn-delete-category',				 
+				params: {accounting_object_id: @acc_object_encript}								
 				}
 				) %></td>
 			</tr>	
@@ -33,3 +32,29 @@
 		</tfoot>			
 	</table>
 </div>
+
+
+<script>
+
+// Добавляем слушатель события загрузки документа
+document.addEventListener('DOMContentLoaded', function() {
+  // Получаем все формы с классом button_to
+  var forms = document.querySelectorAll('form.button_to');
+
+  // Проходим по каждой форме
+  forms.forEach(function(form) {
+    // Добавляем обработчик события submit
+    form.addEventListener('submit', function(event) {
+      // Прекращаем стандартную отправку формы
+      event.preventDefault();
+
+      // Показываем окно подтверждения
+      if (confirm('Вы уверены что хотите удалить категорию?')) {
+        // Отправляем форму вручную, если подтверждено
+        this.submit();
+      }
+    });
+  });
+});
+
+</script>

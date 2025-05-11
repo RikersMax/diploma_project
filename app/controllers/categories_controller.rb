@@ -33,7 +33,7 @@ class CategoriesController < ApplicationController
       flash[:message] = 'category created'
       redirect_to(categories_path(accounting_object_id: params[:category][:accounting_object_id]))
     else
-      flash[:message] = '2 error form categories#create'
+      flash[:message] = category_create.errors.full_messages
       redirect_to(root_path)
     end    
    
@@ -98,8 +98,7 @@ class CategoriesController < ApplicationController
       flash[:message] = '2 error form categories#create'
       render(:edit)
     end
-
-    #render(plain: params)
+    
   end
 
 

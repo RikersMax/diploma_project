@@ -28,7 +28,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_04_23_184430) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name_category", limit: 64
-    t.string "color_category", default: "#93DAFB;"
+    t.string "color_category", limit: 8, default: "#93DAFB;"
     t.bigint "accounting_object_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
