@@ -1,4 +1,6 @@
 module ApplicationHelper
+	include Pagy::Frontend
+	
 	def render_navbar
 		nav_bar = ''
 

@@ -2,14 +2,13 @@
 	<section class="content-section">
 		<div class="show-main-container-accounting">
 			<div class="user-setting-header size-xxl">
-				<span><%= @acc_object.name_object %></span>
+				<span class="size-xxl"><%= @acc_object.name_object %></span>
 			</div>
 
 			<div class="show-container-accounting">					
 				<div class="show-container-accounting-section-left">
 					
 					<%= form_with(url: '#',method: 'POST', data: { turbo: false }) do |f| %>
-					<%# f.fields_for :user do |u|  %>
 
 						<div class="show-accounting-date-fields">								
 							<%= f.label(:date_start)  %>
@@ -25,7 +24,6 @@
 							<%= f.submit('show', class: 'btn-date-show size-l m-top-s')  %>
 						</div>
 
-					<%# end %>
 					<% end %>
 					
 					<div class="show-accounting-info-fields">
@@ -39,7 +37,7 @@
 
 					<div class="select-data-view-container">
 						<div>
-							<span class="select-data-view-btn size-xl" id="btn-to-table">to table</span>
+							<span class="select-data-view-btn size-xl active-button" id="btn-to-table">to table</span>
 						</div>
 
 						<div>
@@ -49,7 +47,7 @@
 
 					<div class="select-data-view-container user-actions-container" >
 						<div>
-							<%= link_to('add record', '#', class: 'btn-user-action')  %>
+							<%= link_to('add record', new_operation_path(accounting_object_id: @acc_object_encript), class: 'btn-user-action')  %>
 						</div>
 
 						<div>
@@ -57,28 +55,22 @@
 						</div>
 
 						<div>
-							<%= link_to('edit', edit_accounting_object_path(@acc_object.id), class: 'btn-user-action')  %>
+							<%= link_to('edit', edit_accounting_object_path(Base64.encode64(@acc_object.id.to_s)), class: 'btn-user-action')  %>
 						</div>
 
 						<div>
 							<%= link_to('report', '#', class: 'btn-user-action')  %>
 						</div>
 					</div>
-
-
-
 				</div>
 
 				<div class="show-container-accounting-section-reight">
-					<div id="table-content">
-						
+					<div id="table-content" class="active-content">						
 						<%= render(partial: 'show_table')  %>
 					</div>
 
 					<div id="chart-content" >
-						
 						<%= render(partial: 'show_chart')  %>
-
 					</div>
 				</div>
 			</div>

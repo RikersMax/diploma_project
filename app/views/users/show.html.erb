@@ -46,7 +46,7 @@
 				        <% @name_type = acc_obj.type_object.name_type%>
 				        <% @name_kind = acc_obj.kind_of_object.name_kind%>
 
-				        <a href="<%=accounting_object_path(acc_obj.id)  %>" class="card">
+				        <a href="<%=accounting_object_path(Base64.encode64(acc_obj.id.to_s))  %>" class="card">
 				        	<div class="card-object-container-name-setting">
 				        		<span class="card-name-object-setting size-xxl"><%= acc_obj.name_object %></span>			        		
 				        	</div>

@@ -1,1 +1,35 @@
-<p>patial table</p>
+<div class="zise-s">
+	<table class="accounting-category-table">
+		<thead>
+			<tr>
+				<th>number</th>
+				<th>category</th>
+				<th>data_stamp</th>
+				<th>amount_of_money</th>
+				<th>description</th>
+				<th>edit</th>			
+			</tr>
+		</thead>
+		<tbody>
+			<% @all_operation_for_acc_object.each_with_index do |operation, i|  %>
+			<tr>
+				<td><%= i + 1 %></td>
+				<td><%= operation.category.name_category %></td>
+				<td><%= operation.data_stamp.to_date %></div></td>
+				<td><%= operation.amount_of_money %></td>
+				<td><%= operation.description %></td>
+				<td><%= link_to('edit', 
+					edit_operation_path(
+					{id: Base64.encode64(operation.id.to_s), accounting_object_id: @acc_object_encript}
+					))%></td>
+			</tr>	
+			<% end %>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="6"><%== pagy_nav(@pagy) %></td>
+			</tr>
+		</tfoot>			
+	</table>
+</div>
+

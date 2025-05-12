@@ -16,11 +16,14 @@ class AccountingObjectController < ApplicationController
   end
 
   def show
-    user = User.find_by(remember_token_digest: session[:user_id])    
+    user = User.find_by(remember_token_digest: session[:user_id])
+    acc_object_decript = Base64.decode64(params[:id])
 
-    if user.accounting_object_ids.include?(params[:id].to_i) then
-      @acc_object = AccountingObject.find(params[:id])
+    if user.accounting_object_ids.include?(acc_object_decript.to_i) then
+      @acc_object = AccountingObject.find(acc_object_decript)
       @acc_object_encript =  Base64.encode64(@acc_object.id.to_s)
+
+      @pagy, @all_operation_for_acc_object = pagy Operation.where(accounting_object_id: @acc_object.id)
 
       render(:show)
     else
@@ -40,17 +43,19 @@ class AccountingObjectController < ApplicationController
       flash[:message] = 'acc_object created'
       redirect_to(accounting_object_index_path)
     else
+      debugger
       @accounting_object_new = AccountingObject.new
       @select_kind_of_object = KindOfObject.all
 
-      flash[:message] = 'error to create acc_object'
+      flash[:message] = acc_object.errors.full_messages
       render(:new)
     end
   end
 
   def edit
     user = User.find_by(remember_token_digest: session[:user_id])
-    acc_object = AccountingObject.find(params[:id])
+    acc_object_decript = Base64.decode64(params[:id])
+    acc_object = AccountingObject.find(acc_object_decript)
 
 
     if user.id == acc_object.user_id then

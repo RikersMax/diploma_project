@@ -14,7 +14,7 @@ class CategoriesController < ApplicationController
     @category_new = Category.new
     @category_new.accounting_object = @acc_object
 
-    @category_list = Category.where(accounting_object_id: @acc_object.id)
+    @pagy, @category_list = pagy(Category.where(accounting_object_id: @acc_object.id), limit: 8)
   end
 
   def create
