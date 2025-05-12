@@ -1,0 +1,87 @@
+<div class="content-form-container-operation">
+		
+	<%= form_with(model: operation, data: { turbo: false }) do |f| %>
+	
+		<div class="text-bottom-create-object size-xxl">
+			<span><%= operation.present? ? 'Update' : 'Create' %>	Operation</span>	
+		</div>
+
+		<div class="form-container-field-object">
+			<%= f.label(:amount_of_money, class: 'm-top-m size-xl')  %>
+			<%= f.number_field(:amount_of_money, 
+			in: (0.00..999_999_999.99),
+			class: 'form-input-create-object size-xl m-top-s',
+			placeholder: '00.0') %>
+		</div>
+
+		<div>
+			<%= f.hidden_field(:accounting_object_id, value: @acc_object_encript)  %>
+		</div>
+
+		<div>			
+			<%= f.hidden_field(:id_encod_operation, value: id_encod_operation) if id_encod_operation.present? %>			
+		</div>
+
+		<div class="form-select-container-object m-bot-xl">
+	    	<div style="display: grid; place-items: center;">
+	    		<span class="size-xl">Категория: </span>
+	    	</div>
+
+	    	<div>
+	    		<%if  @select_categories.empty? then  %>
+	    			<%= link_to('create category', 
+	    			categories_path(accounting_object_id: @acc_object_encript), 
+	    			class: 'btn-user-action')  %>
+	    		<% else %>
+	    			<%= f.select('category_id', @select_categories)  %>
+	    		<% end %>
+	    	</div>
+	    </div>
+
+	    <div class="form-select-container-object m-top-xl">
+	    	<div style="display: grid; place-items: center;">
+				<%= f.label(:data_stamp, class: 'm-top-m size-xl')  %>
+	    	</div>
+	    	<div>
+				<%= f.date_field(:data_stamp, value: Time.now, class: 'form-input-create-object size-xl m-top-s') %>
+	    	</div>
+		</div>
+
+		<div class="form-container-field-object m-top-xl">
+			<%= f.label(:description, class: 'm-top-m size-xl')  %>
+			<%= f.text_area(:description, class: 'form-input-text-area m-top-s', size: "20x5") %>
+		</div>
+		
+		<div class="form-container-field-object m-bot-l m-top-l">			
+			<%= f.submit(operation.persisted? ? 'Update' : 'Create', class: 'btn-create-object m-top-l')  %>
+		</div>
+		
+	<% end %>
+
+	<% if operation.persisted? then %>
+
+		<div>
+	    	<hr class="drop-line-form">
+	    </div>
+	
+		<div class="form-container-field-object m-bot-l m-top-m">
+			<%= button_to('Delete', operation_path(operation_encod), method: :delete, 
+				class: 'btn-delete-object', 
+				id: 'delete-button',
+				params:{accounting_object_id: @acc_object_encript}
+				)  %>
+		</div>
+	<% end %>
+	
+</div>
+
+
+<script>
+    document.getElementById("delete-button").addEventListener("click", function(event){
+      event.preventDefault(); // Предотвращаем стандартное поведение отправки формы
+      
+      if(confirm("Вы действительно хотите удалить эту запись?")) {
+        this.form.submit(); // Отправляем форму, если пользователь подтвердил удаление
+      }
+    });
+</script>

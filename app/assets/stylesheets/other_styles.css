@@ -3,3 +3,9 @@
 	width: 100%;
 	border: 1px solid;
 }
+
+.pagy {
+	display: flex;
+	justify-content: center;
+	gap: 1em;
+}

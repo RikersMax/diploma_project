@@ -1,0 +1,51 @@
+.content-section-operation{
+	display: flex;
+	justify-content: center;
+	width: 70%;
+	height: 70%;
+	margin:1em 0em;
+}
+
+.content-form-container-operation {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	background-color: #93DAFB;
+	width: auto;
+	min-height: auto;
+	border-radius: 1em;	
+	margin: 1em 0em;
+	padding: 0em 1.5em;
+}
+
+.form-input-text-area {
+	background-color: white;
+	outline: none;
+	border: none;
+	border-radius: 0.7em;
+	padding: 1em;
+	font-size: 1.5em;
+	padding-bottom: 5px;
+	resize: none;
+	overflow-y: auto; /* Прокрутка появится автоматически, если контент больше высоты */
+    overflow-x: hidden;
+    padding-top: 0.5em;    
+}
+
+#operation_category_id {
+	box-sizing: border-box;
+	font-size: 1.25em;
+	padding: 0.5em 1em;
+	border: none;
+	background-color: #fff;
+	border-radius: 0.7em;
+}
+
+#operation_amount_of_money.no-spinner::-webkit-inner-spin-button, 
+    input[type=number]::-webkit-outer-spin-button  {
+	-moz-box-shadow:none;
+	-webkit-appearance: none;
+	-moz-appearance:textfield;
+     margin: 0; 
+}
+
