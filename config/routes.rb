@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
  
-  root "guests#index"
+  root("guests#index")
+  get("/about" ,to: 'guests#about')
 
   resources(:users, only: %i[index new show edit create update destroy])
   resources(:accounting_object, except: %i[create])

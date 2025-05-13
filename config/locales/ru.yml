@@ -1,0 +1,27 @@
+ru:
+  table:
+    number: "№"
+    category: "Категория"
+    data_stamp: "Дата записи"
+    amount_of_money: "Сумма"
+    description: "Примечание"
+    edit: "Изменить"
+    name_object: "Название"
+    type_object_id: "Тип обЪекта"
+    kind_of_object_id: "Вид объекта"    
+    show: "Инфо"
+    add_record: "Запись"
+
+  btn:
+    create: "Создать"
+    create_object: "Создать объект"
+    delete: "Удалить"
+    edit: "Изменить"
+    add_record: "Сделать запись"
+    update: "Обновить"
+
+
+  acc_boject:
+    income: "Доход"
+    expense: "Расход"
+
