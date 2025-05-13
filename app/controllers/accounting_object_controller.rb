@@ -34,22 +34,25 @@ class AccountingObjectController < ApplicationController
   end
 
   def create
+    #debugger
+
     user = User.find_by(remember_token_digest: session[:user_id])
     params_create = accounting_object_params.merge!(user_id: user.id)
 
     acc_object = AccountingObject.new(params_create)
+    
 
     if acc_object.save then
       flash[:message] = 'acc_object created'
       redirect_to(accounting_object_index_path)
     else
-      debugger
-      @accounting_object_new = AccountingObject.new
+      @accounting_object_new = acc_object
       @select_kind_of_object = KindOfObject.all
 
       flash[:message] = acc_object.errors.full_messages
       render(:new)
     end
+  
   end
 
   def edit

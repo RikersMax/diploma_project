@@ -28,9 +28,9 @@ module ApplicationHelper
 	def create_or_update(model)
 		result = ''
 		if model.persisted? then
-			result = 'update'
+			result = (t('btn.update'))
 		else
-			result = 'create'
+			result = (t('btn.create'))
 		end
 
 		return(result)		

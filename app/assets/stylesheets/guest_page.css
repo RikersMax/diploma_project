@@ -63,12 +63,12 @@
 	align-items: center;
 }
 
-.guest-navbar-logo {
-    width: 100px;
+.navbar-logo {	
+    width: 3em;
 }
 
-.logo-title {
-
+.guest-navbar-logo-noreq {
+	width: 3em;
 }
 
 .guest-list-links {
@@ -128,14 +128,17 @@
 	padding-top: 2em;
 }
 
-.guest-content-btn {
-	font-size: 2em;
+.guest-content-btn {	
 	color: #000;
 	text-decoration: none;
 	border: 2px solid;
 	border-radius: 0.5em;
 	padding: 5px 10px;	
 	background-color: #93DAFB;
+}
+
+.guest-content-btn:hover {
+	background-color: #CCEFFF;
 }
 
 .guest-content-container-section-three {

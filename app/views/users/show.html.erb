@@ -4,38 +4,33 @@
 			<div class="user-container-setting">
 
 				<div class="user-setting-header size-xxl">
-					<span>user setting</span>
+					<span>Информация аккаутна</span>
 				</div>
 				<div class="user-setting-row">
-					<span class="user-setting-row-line">user_name</span>
+					<span class="user-setting-row-line">Имя</span>
 					<span class="user-setting-row-line"><%= @user.user_name %></span>
 					
 				</div>
 
 				<div class="user-setting-row">
-					<span class="user-setting-row-line">email</span>
+					<span class="user-setting-row-line">Email</span>
 					<span class="user-setting-row-line"><%= @user.email %></span>
 				</div>
 
 				<div class="user-setting-row">
-					<span class="user-setting-row-line">data created_at</span>
-					<span class="user-setting-row-line"><%= @user.created_at %></span>
-				</div>
-
-				<div class="user-setting-row">
-					<span class="user-setting-row-line">data updated_ap</span>
-					<span class="user-setting-row-line"><%= @user.updated_at %></span>
+					<span class="user-setting-row-line">Дата регистрации</span>
+					<span class="user-setting-row-line"><%= @user.created_at.to_date %></span>
 				</div>
 
 				<div class="user-setting-btn m-bot-m">
-					<span><%= link_to('Accaunt edit', edit_user_path('user')) %></span>
+					<span><%= link_to(t('btn.edit'), edit_user_path('user'), class: 'guest-content-btn size-xl') %></span>
 				</div>
 			</div>
 
 			<div class="user-container-setting-objects">
 
 				<div class="user-setting-header size-xxl">
-					<span>your objects setting</span>
+					<span>Список ваших объектов</span>
 				</div>
 
 				<% if @accounting_objects.present?%>
@@ -64,14 +59,15 @@
 
 				<% else %>
 					<div class="user-setting-header-bottom size-l">
-						<span>у вас нет объекта</span>
+						<span class="size-xl">У вас нет объекта</span>
 					</div>
 
 					<div class="user-setting-btn m-bot-m">
 						
-					<%= link_to('Create object', 
-								new_accounting_object_path, 
-								class: 'guest-content-btn')  %>
+					<%= link_to(t('btn.create_object'), 
+						new_accounting_object_path, 
+						class: 'guest-content-btn size-xl'
+							)%>
 					</div>
 				<% end %>
 				

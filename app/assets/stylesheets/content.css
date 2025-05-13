@@ -89,7 +89,7 @@
 .content-form-create-object {
 	display: flex;
 	flex-direction: column;
-	width: 70%;	
+	width: 90%;	
 }
 
 .form-container-field-object {
@@ -107,7 +107,7 @@
 	outline: none;
 	border: none;
 	border-radius: 0.7em;
-/*	width: 100%;*/
+	width: 80%;
 	padding: 0em 1em;
 	font-size: 1.5em;
 	padding-top: 5px;
@@ -119,7 +119,7 @@
 
 .form-radio-btn-container {
 	display: flex;
-	justify-content: space-between;
+	justify-content: space-around;
 	margin-top: 1em;
 }
 

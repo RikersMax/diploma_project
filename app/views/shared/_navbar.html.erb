@@ -1,15 +1,17 @@
 <article class="nav-bar-header-contaier-main">
 	<section class="nav-bar-container">
-		<div class="nav-bar-contianer-logo">
-			<%= image_tag("logo.png", class: 'navbar-logo') %>
-			<span class="logo-title">Teppilin</span>
+		<div class="guest-contianer-logo">
+			<a href="/" class="guest-contianer-logo" style="text-decoration: none; color: #000; padding-top: 0.25em;">
+				<%= image_tag("logo.png", class: 'navbar-logo') %>
+				<span class="logo-title">Teppilin</span>
+			</a>
 		</div>
 
 		<ul class="nav-bar-list-links">
 			
-			<li><%= link_to('new object', new_accounting_object_path, class: 'nav-bar-link') %></li>
-			<li><%= link_to('your objects', accounting_object_index_path, class: 'nav-bar-link') %></li>
-			<li><%= link_to('Обо всем', '#', class: 'nav-bar-link') %></li>
+			<li><%= link_to('Новый учет', new_accounting_object_path, class: 'nav-bar-link') %></li>
+			<li><%= link_to('Ваши учеты', accounting_object_index_path, class: 'nav-bar-link') %></li>
+			<li><%= link_to('О проекте', '/about', class: 'nav-bar-link') %></li>
 
 		</ul>
 

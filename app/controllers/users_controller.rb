@@ -33,11 +33,13 @@ class UsersController < ApplicationController
       @user.remember_me
       #r_connect.setex(@user.remember_token, 1000 ,@user.attributes.to_json)
 
+      flash[:message] = 'user created'
       session[:user_id] = @user.remember_token
       redirect_to(root_path)
       
       #render(plain: session[:user_id])
     else
+      flash[:message] = @user.errors.full_messages
       render :new
     end
 =begin

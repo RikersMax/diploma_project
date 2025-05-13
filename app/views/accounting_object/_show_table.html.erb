@@ -2,12 +2,12 @@
 	<table class="accounting-category-table">
 		<thead>
 			<tr>
-				<th>number</th>
-				<th>category</th>
-				<th>data_stamp</th>
-				<th>amount_of_money</th>
-				<th>description</th>
-				<th>edit</th>			
+				<th><%= t('table.number')  %></th>
+				<th><%= t('table.category')  %></th>
+				<th><%= t('table.data_stamp')  %></th>
+				<th><%= t('table.amount_of_money')  %></th>
+				<th><%= t('table.description')  %></th>
+				<th><%= t('table.edit')  %></th>			
 			</tr>
 		</thead>
 		<tbody>
@@ -18,7 +18,7 @@
 				<td><%= operation.data_stamp.to_date %></div></td>
 				<td><%= operation.amount_of_money %></td>
 				<td><%= operation.description %></td>
-				<td><%= link_to('edit', 
+				<td><%= link_to(t('btn.edit'), 
 					edit_operation_path(
 					{id: Base64.encode64(operation.id.to_s), accounting_object_id: @acc_object_encript}
 					))%></td>

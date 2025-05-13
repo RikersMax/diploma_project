@@ -28,19 +28,20 @@
 		    </div>
 
 		    <div class="user-setting-header-bottom size-xl">
-		    	<span>Choise type</span>
+		    	<span>Выберите тип</span>
 		    </div>
 		    
 		    <div class="form-radio-btn-container">
-					<div class="form-radio-btn size-xl">					
+		    	<input id="radio-test-object" type="radio" name="accounting_object[type_object_id]" value="3" hidden checked>
 
+					<div class="form-radio-btn size-xl">
 						<input id="radio-income-object" type="radio" name="accounting_object[type_object_id]" value="2">
-						<label for="radio-income-object" id="radio-income-object-label" >income</label>
+						<label for="radio-income-object" id="radio-income-object-label" ><%= t('acc_boject.income') %></label>
 					</div>
 
 					<div class="form-radio-btn size-xl">
-						<input id="radio-expense-object" type="radio" name="accounting_object[type_object_id]" value="1" checked>
-						<label for="radio-expense-object" id="radio-expense-object-label">expense</label>
+						<input id="radio-expense-object" type="radio" name="accounting_object[type_object_id]" value="1">
+						<label for="radio-expense-object" id="radio-expense-object-label"><%= t('acc_boject.expense') %></label>
 					</div>
 				 
 		    </div>
@@ -51,12 +52,12 @@
 
 
 		    <div class="user-setting-header-bottom size-xl">
-		    	<span>Choise kind of</span>
+		    	<span>Вид вашего объекта</span>
 		    </div>
 
 		    <div class="form-select-container-object">
 		    	<div style="display: grid; place-items: center;">
-		    		<span>Вид объекта:</span>
+		    		<span class="size-xl">Вид объекта:</span>
 		    	</div>
 
 		    	<div>

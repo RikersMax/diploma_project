@@ -1,14 +1,16 @@
 <article class="guest-header-contaier-main">
 	<section class="guest-nav-bar-container">
 		<div class="guest-contianer-logo">
-			<%= image_tag("logo.png", class: 'guest-navbar-logo') %>
-			<span class="logo-title">Teppilin</span>
-		</div>
+			<a href="/" class="guest-contianer-logo" style="text-decoration: none; color: #000;">
+				<%= image_tag("logo.png", class: 'guest-navbar-logo-noreq') %>
+				<span class="logo-title">Teppilin</span>
+			</a>
+		</div>		
 
 		<ul class="guest-list-links">
-			<li>О проекте</li>
-			<li>О задачи</li>
-			<li>Обо всем</li>
+			<li><%= link_to('Новый учет', new_accounting_object_path, class: 'nav-bar-link') %></li>
+			<li><%= link_to('Ваши учеты', accounting_object_index_path, class: 'nav-bar-link') %></li>
+			<li><%= link_to('О проекте', '/about', class: 'nav-bar-link') %></li>
 		</ul>
 		
 		<%= render(partial: 'shared/dropdown_menu') %>
@@ -32,7 +34,7 @@
 			</div>
 
 			<div class="guest-conteiner-content-btn">
-				<%= link_to('Начать учет', 
+				<%= link_to('Начать', 
 				(current_user ? accounting_object_index_path : new_session_path), 
 				class: 'guest-content-btn')  %>
 			</div>
