@@ -10,6 +10,7 @@
 			<%= f.label(:amount_of_money, class: 'm-top-m size-xl')  %>
 			<%= f.number_field(:amount_of_money, 
 			in: (0.00..999_999_999.99),
+			step: "any",
 			class: 'form-input-create-object size-xl m-top-s',
 			placeholder: '00.0') %>
 		</div>

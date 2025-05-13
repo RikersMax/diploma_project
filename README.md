@@ -1,24 +1,61 @@
-# README
+## Онлайн-сервис учета личных финансов
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Описание проекта
 
-Things you may want to cover:
+Онлайн-сервис предназначен для удобного ведения личного бюджета пользователей. Сервис позволяет пользователям отслеживать доходы и расходы, планировать бюджет, получать аналитику по финансовым операциям и помогает эффективно управлять своими финансовыми ресурсами.
 
-* Ruby version
+### Основные возможности сервиса:
 
-* System dependencies
+- Добавление доходов и расходов с категоризацией операций.
+- Планирование бюджета на месяц/год.
+- Анализ финансовой активности через графики и отчёты.
+- Настройка уведомлений о превышении лимита затрат.
+- Безопасность хранения персональных данных и конфиденциальная информация.
 
-* Configuration
+> #### Технологический стек
+> 
+> - Backend: Ruby on Rails 7.x
+> - База данных: PostgreSQL
+> - Кэширование и очереди задач: Redis
+> - Контейнеризация и деплоймент: Docker Compose
 
-* Database creation
+### Установка и запуск приложения локально
 
-* Database initialization
+> #### Предварительные требования
+> 
+> - Установленный Docker и Docker Compose.
+> - Ruby >= 3.1.x
+> - Node.js & Yarn (опционально)
 
-* How to run the test suite
+Инструкция по установке
 
-* Services (job queues, cache servers, search engines, etc.)
+1. Склонируйте репозиторий:
+```
+   git clone https://github.com/<username>/personal-finance-service.git
+   cd personal-finance-service   
+```
+2. Запустите контейнеры базы данных и сервера с помощью Docker Compose:
+```
+   docker-compose up -d
+```
+3. Зайдите внутрь контейнера Ruby-приложения и установите зависимости:
+```
+   docker exec -it app bash
+   bundle install
+   yarn install # Если используется фронтенд на JavaScript
+```
+4. Создайте и мигрируйте базу данных:
+```
+   bin/rails db:create
+   bin/rails db:migrate
+```
+5. Запустите приложение:
+```
+   bin/rails server
+```
 
-* Deployment instructions
+Сервис доступен по адресу  <http://localhost:3000/.>
 
-* ...
+
+
+Данный проект распространяется под лицензией MIT. Полные условия лицензии см. в файле LICENSE.
