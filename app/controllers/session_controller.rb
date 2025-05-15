@@ -8,9 +8,9 @@ class SessionController < ApplicationController
   end
 
   def create
-   #render(plain: params)
     @user = User.find_by(email: session_params[:email])    
 
+    #debugger
     if @user.present? && @user.authenticate(session_params[:password])
       @user.remember_me
       
@@ -21,8 +21,8 @@ class SessionController < ApplicationController
       session[:user_id] = @user.remember_token
       redirect_to(root_path)
     else
-      flash[:message] = 'message from session#creat'
-      @user = User.new
+      flash[:message] = "Неправильный пароль или email"
+      @user = User.new(email: session_params[:email])
       render(:new)
     end
   

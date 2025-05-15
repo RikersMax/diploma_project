@@ -11,7 +11,7 @@
 }
 
 .about-container {
-
+	margin-bottom: 2em;
 }
 
 .about-header-main {
@@ -26,5 +26,5 @@
 }
 
 .about-container-text {
-	padding: 1em 0em;
+	padding: 1em 0em;	
 }

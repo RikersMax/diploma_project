@@ -1,4 +1,14 @@
 ru:
+  user:
+    sign_in: "Войти"
+    sign_up: "Регистрация"
+    update: "Обновить"
+    exit: "Выход"
+    user_name: "Ваше имя"
+    email: "Почта"
+    password_first: "Пароль"
+    password_second: "Повторите пароль"
+
   table:
     number: "№"
     category: "Категория"
@@ -11,17 +21,30 @@ ru:
     kind_of_object_id: "Вид объекта"    
     show: "Инфо"
     add_record: "Запись"
+    color: "Цвет"
 
   btn:
     create: "Создать"
     create_object: "Создать объект"
-    delete: "Удалить"
-    edit: "Изменить"
     add_record: "Сделать запись"
+    add_category: "Сделать категорию"
+    upd_category: "Сделать категорию"
+    edit: "Изменить"
     update: "Обновить"
-
+    delete: "Удалить"
+    report: "Отчет"
+    show: "Инфо"
 
   acc_boject:
     income: "Доход"
     expense: "Расход"
+    personal_object: "Персональный"      
+    shared_object: "Совместный"
 
+  form:
+    acc_boject:
+      create_object: "Создание объекта"
+      update_object: "Изменение объекта"
+    select_kind:
+      personal_object: "Персональный"      
+      shared_object: "Совместный"

@@ -29,7 +29,7 @@
 
 .guest-container-image-main {
 	overflow: hidden;
-	max-height: 1024px;
+	max-height: 999px;
 }
 
 .guest-image-main {	
@@ -107,6 +107,7 @@
 .guest-content-contaier-main {
 	padding-left: 5em;
 	padding-top: 6em;
+	margin-bottom: 1em;
 }
 
 
@@ -135,6 +136,7 @@
 	border-radius: 0.5em;
 	padding: 5px 10px;	
 	background-color: #93DAFB;
+	font-size: 1.5em;
 }
 
 .guest-content-btn:hover {

@@ -9,7 +9,7 @@
 						) do |f|  %>	
 
 			<div class="user-setting-header-bottom size-xl">
-		    	<h2><%= accounting_object.persisted? ? 'Edit object' : 'Create object'  %></h2>
+		    	<h2><%= accounting_object.persisted? ? t('form.acc_boject.update_object') : t('form.acc_boject.create_object')  %></h2>
 		    </div>								
 
 		    <div class="form-container-field-object">
@@ -61,7 +61,14 @@
 		    	</div>
 
 		    	<div>
-		    		<%= select('select_kind', :kind_of_object_id, select_kind_of_object.collect { |p| [p.name_kind, p.id] })  %>
+		    		<%# select('select_kind', :kind_of_object_id, 
+		    		select_kind_of_object.collect { |p| [t("form.select_kind#{p.name_kind}"), p.id] }
+		    		)  %>
+		    	</div>
+		    	<div>
+		    		<%= select('select_kind', :kind_of_object_id, 
+		    		select_kind_of_object.collect { |p| [t("form.select_kind.#{p.name_kind}"), p.id] }
+		    		)  %>
 		    	</div>
 		    </div>
 
@@ -72,23 +79,24 @@
 		    <div class="form-container-field-object m-top-xl m-bot-m">
 		    	<%= f.submit(create_or_update(accounting_object), class: 'btn-create-object') %>
 		    </div>
+		  
 		<% end %>
 
 	    <% if accounting_object.persisted? then  %>
-		<div>
-		    <hr class="drop-line-form">
-		</div>
+				<div>
+				    <hr class="drop-line-form">
+				</div>
 
-
-    	<div class="form-container-field-object m-bot-xl m-top-m">
-			<%= button_to('delete', 
-			"/accounting_object/#{accounting_object.id}", 
-			method: :delete, 
-			class: 'btn-delete-object', 
-			id: 'delete-button'
-			)  %>
-    	</div>
+	    	<div class="form-container-field-object m-bot-xl m-top-m">
+				<%= button_to(t('btn.delete'), 
+				"/accounting_object/#{accounting_object.id}", 
+				method: :delete, 
+				class: 'btn-delete-object', 
+				id: 'delete-button'
+				)  %>
+	    	</div>
 	    <% end %>
+
 	    </div>
 	</div>		
 </div>		

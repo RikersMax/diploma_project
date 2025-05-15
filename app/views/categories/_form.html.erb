@@ -1,5 +1,5 @@
 <div class="user-setting-header size-xl">
-	<span><%= category_model.persisted? ? 'update category' : 'create category' %></span>
+	<span><%= category_model.persisted? ? t('btn.upd_category') : t('.btn.add_category') %></span>
 </div>
 
 <%= form_with(model: category_model, method: method_action, data: { turbo: false }) do |f| %>
@@ -16,7 +16,7 @@
 	<div class="colors-palette-container">
 
 		<div style="text-align: center;">
-			<span>choice color</span>
+			<span>Выбор цвета</span>
 		</div>
 		
 		<div class="form-radio-btn-container">
@@ -75,7 +75,7 @@
 
 
 	<div style="text-align: center;">
-		<%= f.submit(category_model.persisted? ? 'update' : 'create', class: 'btn-date-show size-xl')  %>
+		<%= f.submit(category_model.persisted? ? t('btn.update') : t('btn.create'), class: 'btn-date-show size-xl')  %>
 	</div>
 
 <% end %>

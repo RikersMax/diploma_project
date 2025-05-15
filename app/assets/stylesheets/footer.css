@@ -55,6 +55,14 @@ footer {
     margin-bottom: 0.3em;
 }
 
+.footer-contacts a {
+    text-decoration: none;
+    color:#737373; 
+}
+.footer-contacts a:hover {
+    color: #CCEFFF;
+}
+
 .footer-list-links {
     list-style: none;
     align-items: flex-start;

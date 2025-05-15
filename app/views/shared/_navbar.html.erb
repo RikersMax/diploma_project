@@ -1,5 +1,5 @@
 <article class="nav-bar-header-contaier-main">
-	<section class="nav-bar-container">
+	<nav class="nav-bar-container">
 		<div class="guest-contianer-logo">
 			<a href="/" class="guest-contianer-logo" style="text-decoration: none; color: #000; padding-top: 0.25em;">
 				<%= image_tag("logo.png", class: 'navbar-logo') %>
@@ -8,14 +8,17 @@
 		</div>
 
 		<ul class="nav-bar-list-links">
-			
-			<li><%= link_to('Новый учет', new_accounting_object_path, class: 'nav-bar-link') %></li>
-			<li><%= link_to('Ваши учеты', accounting_object_index_path, class: 'nav-bar-link') %></li>
+
+			<% if user_signed_in?%>
+				<li><%= link_to('Новый учет', new_accounting_object_path, class: 'nav-bar-link') %></li>
+				<li><%= link_to('Ваши объекты учета', accounting_object_index_path, class: 'nav-bar-link') %></li>				
+			<% end %>
+				
 			<li><%= link_to('О проекте', '/about', class: 'nav-bar-link') %></li>
 
 		</ul>
 
 		<%= render(partial: 'shared/dropdown_menu') %>
 
-	</section>
+	</nav>
 </article>

@@ -14,12 +14,12 @@ module ApplicationHelper
 	end
 
 	def btn_sign_in_sign_up(controller)
-		result = {}
+		result = ''
 
 		if controller == 'session' then
-			result = {btn: 'sign_in'}
+			result = t('user.sign_in')
 		elsif controller == 'user'
-			result = {btn: 'sign_up'}
+			result = t('user.sign_up')
 		end
 
 		return(result)

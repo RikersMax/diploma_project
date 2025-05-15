@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   before_action(:require_authentication, only: %i[show edit update destroy])
-  #before_action(:no_require_authentication, only: %i[new create])
+  before_action(:no_require_authentication, only: %i[new create])
 
 	def index
     @users = User.all
@@ -13,15 +13,12 @@ class UsersController < ApplicationController
   end
 
   def show
-    
     @user = User.find_by(remember_token_digest: session[:user_id])
     @accounting_objects = @user.accounting_object #['test1', 'test2', 'test3', 'test4']#@user.accounting_object
   end
 
 
   def create
-
-    #render(plain: params)
 
     @user = User.new(user_params)
     #r_connect = Redis.new(db: 0)
@@ -42,9 +39,6 @@ class UsersController < ApplicationController
       flash[:message] = @user.errors.full_messages
       render :new
     end
-=begin
-=end
-
   end
 
 
@@ -68,9 +62,6 @@ class UsersController < ApplicationController
   def destroy
 
   end
-
-
-
 
 
 

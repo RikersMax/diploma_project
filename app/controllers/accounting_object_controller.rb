@@ -27,6 +27,7 @@ class AccountingObjectController < ApplicationController
 
       render(:show)
     else
+      #flash[:message] = user.errors.full_messages
       flash[:message] = '1 error from accounting_object#show'
       redirect_to(root_path)
     end
@@ -78,21 +79,21 @@ class AccountingObjectController < ApplicationController
     if user.id == acc_object.user_id then
 
       if acc_object.update(accounting_object_params) then
-        flash[:message] = 'acc_object created'
-        redirect_to(root_path)
+        flash[:message] = 'acc_object update'
+        redirect_to(accounting_object_index_path)
       else
         @accounting_object_new = AccountingObject.new
         @select_kind_of_object = KindOfObject.all
+        @acc_object_user = acc_object
 
-        flash[:message] = '2 error from accounting_object#update'
-        render(:new)
+        flash.now[:message] = acc_object.errors.full_messages
+        render(:edit)
       end
 
     else
       flash[:message] = '1 error from accounting_object#update'
       redirect_to(root_path)
     end
-
   end
 
   def destroy

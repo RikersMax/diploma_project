@@ -2,19 +2,17 @@
     <section class="sectin-1">
 
         <div class="footer-header">
-            <span>About</span>
+            <span>О проекте</span>
         </div>
         <div class="footer-text">
             <p>
             Данный сайт является учебным проектом, посвящённым учету личных финансов. Цель проекта — показать основы организации личного бюджета и принципы управления денежными средствами.
-            </p>
-            <br>
+            </p>            
             <p>
             Сайт не предназначен для оказания коммерческих услуг или продажи продуктов. Вся представленная информация носит исключительно ознакомительный характер и предназначена исключительно для образовательных целей.
-            </p>
-            <br>
+            </p>            
             <p>
-            Спасибо за интерес к проекту! Любые замечания и пожелания можно оставить через форму обратной связи.                
+            Спасибо за интерес к проекту! Любые замечания и пожелания можно отправлять на почту lichnye_finansy@internet.ru.                
             </p>
         </div>
 
@@ -23,55 +21,58 @@
     <section class="sectin-2">
 
         <div class="footer-header">
-            <span>links</span>
+            <span>Ссылки</span>
         </div>
 
         <div class="footer-container-links">
             <div class="footer-text">
                 <ul class="footer-list-links">
-                    <li><%= link_to('link-1link-1link-1z', '#', class: 'footer-link') %></li>
-                    <li><%= link_to('link-2', '#', class: 'footer-link') %></li>
-                    <li><%= link_to('link-3', '#', class: 'footer-link') %></li>
+                    <li><%= link_to('Главная', root_path, class: 'footer-link') %></li>
+                    <li><%= link_to('О проекте', '/about', class: 'footer-link') %></li>
+                    <li><%= link_to('Вход в аккаунт', new_session_path, class: 'footer-link') %></li>
+                    <li><%= link_to('Регистрация', new_user_path, class: 'footer-link') %></li>                    
+                </ul>
+            </div>
+
+        <% if user_signed_in?%>
+            
+            <div class="footer-text">
+                <ul class="footer-list-links">
+                    <li><%= link_to('Новый учет', new_accounting_object_path, class: 'footer-link') %></li>
+                    <li><%= link_to('Ваши объекты учета', accounting_object_index_path, class: 'footer-link') %></li>
+                    <li><%= link_to('Информация', user_path('user'), class: 'footer-link') %></li>
                     <li><%= link_to('link-4', '#', class: 'footer-link') %></li>
                     <li><%= link_to('link-5', '#', class: 'footer-link') %></li>
                 </ul>
             </div>
 
-            <div class="footer-text">
-            <ul class="footer-list-links">
-                <li><%= link_to('link-1link-1link-1zz', '#', class: 'footer-link') %></li>
-                <li><%= link_to('link-2', '#', class: 'footer-link') %></li>
-                <li><%= link_to('link-3', '#', class: 'footer-link') %></li>
-                <li><%= link_to('link-4', '#', class: 'footer-link') %></li>
-                <li><%= link_to('link-5', '#', class: 'footer-link') %></li>
-            </ul>
+        <% end %>
+            
         </div>
-
-        </div>
-
 
     </section>
 
     <section class="sectin-3">
 
         <div class="footer-header">
-            <span>Contacts</span>
+            <span>Контакты</span>
         </div>
         <div class="footer-text">
             <div class="footer-contacts">
-                <span>contact 1</span>
-                <span>88888888</span>
+                <span>Mail</span>
+                <span>lichnye_finansy@internet.ru</span>
             </div>
 
             <div class="footer-contacts">
-                <span>contact 2</span>
-                <span>77777777777</span>
-            </div>
-
-            <div class="footer-contacts">
-                <span>contact 3</span>
-                <span>99999999999</span>
-            </div>
+                <span>Github</span>
+                <span>
+                <%= link_to('https://github.com/RikersMax', 
+                'https://github.com/RikersMax', 
+                target: '_blank', 
+                rel: 'noopener noreferrer') 
+                %> 
+                </span>
+            </div>            
         </div>
 
     </section>    
