@@ -20,6 +20,7 @@ class OperationsController < ApplicationController
   end
 
   def create
+
     user = User.find_by(remember_token_digest: session[:user_id])
 
     @acc_object_encript = params[:operation][:accounting_object_id]
@@ -33,6 +34,7 @@ class OperationsController < ApplicationController
     operation_params[:amount_of_money] = params[:operation][:amount_of_money]
     operation_params[:category_id] = params[:operation][:category_id]
     operation_params[:data_stamp] = params[:operation][:data_stamp]
+    operation_params[:description] = params[:operation][:description]
 
     operation = Operation.new(operation_params)
 
@@ -45,6 +47,7 @@ class OperationsController < ApplicationController
       flash[:message] = 'error operation#create'
       render(:new)
     end
+   
   end
 
   def edit   

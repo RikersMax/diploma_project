@@ -2,6 +2,8 @@ class AccountingObject < ApplicationRecord
   belongs_to :user
   belongs_to :type_object
   belongs_to :kind_of_object
+  
+  has_many :category, dependent: :destroy
 
   validates(:user, presence: true)
   validates(:type_object, presence: true)
