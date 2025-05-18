@@ -36,15 +36,17 @@ class OperationsController < ApplicationController
     operation_params[:data_stamp] = params[:operation][:data_stamp]
     operation_params[:description] = params[:operation][:description]
 
-    operation = Operation.new(operation_params)
+    @operation = Operation.new(operation_params)
 
     #render(plain: operation)
 
-    if operation.save then
+    if @operation.save then
       flash[:message] = 'operation create'      
       redirect_to(accounting_object_path(id: @acc_object_encript))
     else
-      flash[:message] = 'error operation#create'
+      categories_all = Category.where(accounting_object_id: acc_object_decript)
+      @select_categories = categories_all.inject([]) {|arr, item| arr.push([item.name_category, item.id])}
+      flash[:message] = @operation.errors.full_messages
       render(:new)
     end
    

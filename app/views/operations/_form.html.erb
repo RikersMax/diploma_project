@@ -1,9 +1,14 @@
 <div class="content-form-container-operation">
 		
 	<%= form_with(model: operation, data: { turbo: false }) do |f| %>
+		
+		<%= f.hidden_field(:accounting_object_id, value: @acc_object_encript)  %>
+				
+		<%= f.hidden_field(:id_encod_operation, value: id_encod_operation) if id_encod_operation.present? %>			
+		
 	
 		<div class="text-bottom-create-object size-xxl">
-			<span><%= operation.present? ? t('btn.edit') : t('btn.create') %>	Operation</span>	
+			<span><%= operation.persisted? ? t('btn.edit') : t('btn.create') %>	запись</span>	
 		</div>
 
 		<div class="form-container-field-object">
@@ -14,13 +19,6 @@
 			placeholder: '00.0') %>
 		</div>
 
-		<div>
-			<%= f.hidden_field(:accounting_object_id, value: @acc_object_encript)  %>
-		</div>
-
-		<div>			
-			<%= f.hidden_field(:id_encod_operation, value: id_encod_operation) if id_encod_operation.present? %>			
-		</div>
 
 		<div class="form-select-container-object m-bot-xl">
 	    	<div style="display: grid; place-items: center;">
@@ -40,7 +38,7 @@
 
 	    <div class="form-select-container-object m-top-xl">
 	    	<div style="display: grid; place-items: center;">
-				<%= f.label(:data_stamp, class: 'm-top-m size-xl')  %>
+				<%= f.label(:data_stamp,  t('form.date_stamp') + ':', class: 'm-top-m size-xl')  %>
 	    	</div>
 	    	<div>
 				<%= f.date_field(:data_stamp, value: Time.now, class: 'form-input-create-object size-xl m-top-s') %>
@@ -48,7 +46,7 @@
 		</div>
 
 		<div class="form-container-field-object m-top-xl">
-			<%= f.label(:description, class: 'm-top-m size-xl')  %>
+			<%= f.label(:description, t('form.description'), class: 'm-top-m size-xl')  %>
 			<%= f.text_area(:description, class: 'form-input-text-area m-top-s', size: "20x5") %>
 		</div>
 		
