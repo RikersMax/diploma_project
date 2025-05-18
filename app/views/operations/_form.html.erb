@@ -15,6 +15,7 @@
 			<%= f.label(:amount_of_money, class: 'm-top-m size-xl')  %>
 			<%= f.number_field(:amount_of_money, 
 			in: (0.00..999_999_999.99),
+			step: (0.01),
 			class: 'form-input-create-object size-xl m-top-s',
 			placeholder: '00.0') %>
 		</div>
@@ -59,8 +60,8 @@
 	<% if operation.persisted? then %>
 
 		<div>
-	    	<hr class="drop-line-form">
-	    </div>
+    	<hr class="drop-line-form">
+    </div>
 	
 		<div class="form-container-field-object m-bot-l m-top-m">
 			<%= button_to(t('btn.delete'), operation_path(operation_encod), method: :delete, 

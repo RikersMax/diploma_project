@@ -16,32 +16,46 @@ class AccountingObjectController < ApplicationController
   end
 
   def show
+   
+
     user = User.find_by(remember_token_digest: session[:user_id])
     acc_object_decript = Base64.decode64(params[:id])
+      @date_end = Time.now
+      @date_start = @date_end.minus_with_duration(30.days)
+
+    if params['[date_field_operations]'].present? then
+      begin
+        @date_start = Time.parse(params['[date_field_operations]'][:date_start]).beginning_of_day 
+        @date_end = Time.parse(params['[date_field_operations]'][:date_end]).end_of_day #|| Time.now
+      rescue ArgumentError => e
+        @date_end = Time.now
+        @date_start = @date_end.minus_with_duration(30.days)
+      end
+    end
 
     if user.accounting_object_ids.include?(acc_object_decript.to_i) then
       @acc_object = AccountingObject.find(acc_object_decript)
       @acc_object_encript =  Base64.encode64(@acc_object.id.to_s)
 
-      @pagy, @all_operation_for_acc_object = pagy Operation.where(accounting_object_id: @acc_object.id)
+      @pagy, @all_operation_for_acc_object = pagy Operation
+      .where(accounting_object_id: @acc_object.id)
+      .where(created_at: @date_start..@date_end)
+      .order(created_at: :desc)
 
       render(:show)
     else
-      #flash[:message] = user.errors.full_messages
       flash[:message] = '1 error from accounting_object#show'
       redirect_to(root_path)
     end
-
+=begin
+=end
   end
 
   def create
-    #debugger
 
     user = User.find_by(remember_token_digest: session[:user_id])
     params_create = accounting_object_params.merge!(user_id: user.id)
-
     acc_object = AccountingObject.new(params_create)
-    
 
     if acc_object.save then
       flash[:message] = 'acc_object created'
@@ -57,6 +71,7 @@ class AccountingObjectController < ApplicationController
   end
 
   def edit
+
     user = User.find_by(remember_token_digest: session[:user_id])
     acc_object_decript = Base64.decode64(params[:id])
     acc_object = AccountingObject.find(acc_object_decript)
@@ -73,6 +88,7 @@ class AccountingObjectController < ApplicationController
 
 
   def update
+
     user = User.find_by(remember_token_digest: session[:user_id])
     acc_object = AccountingObject.find(params[:id])
 
@@ -97,6 +113,7 @@ class AccountingObjectController < ApplicationController
   end
 
   def destroy
+
     user = User.find_by(remember_token_digest: session[:user_id])
     acc_object = AccountingObject.find(params[:id])
 
@@ -113,7 +130,8 @@ class AccountingObjectController < ApplicationController
     else
       flash[:message] = '1 error from accounting_object#delete'
       redirect_to(root_path)
-    end  
+    end
+  
   end
 
   private

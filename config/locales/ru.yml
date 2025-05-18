@@ -28,8 +28,10 @@ ru:
     create_object: "Создать объект"
     add_record: "Сделать запись"
     add_category: "Сделать категорию"
-    upd_category: "Сделать категорию"
+    upd_category: "Обновить категорию"
+    all_category: "Категории"
     edit: "Изменить"
+    edit_object: "Изменить объект"
     update: "Обновить"
     delete: "Удалить"
     report: "Отчет"
@@ -48,3 +50,5 @@ ru:
     select_kind:
       personal_object: "Персональный"      
       shared_object: "Совместный"
+    date_stamp: "Дата"    
+    description: "Примечание"

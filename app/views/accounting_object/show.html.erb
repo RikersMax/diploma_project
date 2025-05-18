@@ -7,25 +7,7 @@
 
 			<div class="show-container-accounting">					
 				<div class="show-container-accounting-section-left">
-					
-					<%= form_with(url: '#',method: 'POST', data: { turbo: false }) do |f| %>
 
-						<div class="show-accounting-date-fields">								
-							<%= f.label(:date_start, 'Дата начало')  %>
-							<%= f.date_field(:date_start,value: @acc_object.created_at.to_date, required: true) %>
-						</div>
-
-						<div class="show-accounting-date-fields">
-							<%= f.label(:date_end, 'Дата конец')  %>
-							<%= f.date_field(:date_end,value: Time.now.to_date, required: true) %>
-						</div>
-
-						<div style="text-align: center;">
-							<%= f.submit(t('btn.show'), class: 'btn-date-show size-l m-top-s')  %>
-						</div>
-
-					<% end %>
-					
 					<div class="show-accounting-info-fields">
 						<div>
 							<span>Тип объекта</span>
@@ -34,6 +16,42 @@
 							<span class="show-accoutnting-type-object-<%= @acc_object.type_object_id%>"><%= @acc_object.type_object.name_type %></span>
 						</div>
 					</div>
+					
+					<%= form_with(url: accounting_object_path(Base64.encode64(@acc_object.id.to_s)),
+						method: 'GET', 
+						data: { turbo: false }) do |f| 
+					%>
+
+						<%= f.fields_for :date_field_operations do |ff| %>
+
+							<div class="show-accounting-date-fields">								
+								<%= ff.label(:date_start, 'Дата начало')  %>
+								<%= ff.date_field(:date_start, value: @date_start) %>
+							</div>
+
+							<div class="show-accounting-date-fields">
+								<%= ff.label(:date_end, 'Дата конец')  %>
+								<%= ff.date_field(:date_end, value: @date_end) %>
+							</div>
+
+						<% end %>
+						<div class="show-accounting-date-fields">							
+
+							<div style="text-align: center;">							
+								<button type="button" onclick="resetDates()" class="btn-date-reset size-l m-top-s">Отчистить </button>
+							</div>	
+
+							<div style="text-align: center;">
+								<%= f.submit('Посмотреть', class: 'btn-date-show size-l m-top-s')  %>
+							</div>
+
+						</div>
+					<% end %>
+
+					
+					<div>
+    				<hr class="drop-line-form">
+    			</div>
 
 					<div class="select-data-view-container">
 						<div>
@@ -53,13 +71,13 @@
 						</div>
 
 						<div>
-							<%= link_to(t('btn.add_category'), 
+							<%= link_to(t('btn.all_category'), 
 							categories_path(accounting_object_id: @acc_object_encript), 
 							class: 'btn-user-action')  %>
 						</div>
 
 						<div>
-							<%= link_to(t('btn.edit'), 
+							<%= link_to(t('btn.edit_object'), 
 							edit_accounting_object_path(Base64.encode64(@acc_object.id.to_s)), 
 							class: 'btn-user-action')  %>
 						</div>
@@ -118,5 +136,13 @@
   // Назначаем обработчики событий на обе кнопки
   btnToTable.addEventListener('click', handleButtonClick);
   btnToChart.addEventListener('click', handleButtonClick);
+
+
+
+    function resetDates() {
+        document.getElementById('_date_field_operations_date_start').value = '';
+        document.getElementById('_date_field_operations_date_end').value = '';
+    }
+
 </script>
 
