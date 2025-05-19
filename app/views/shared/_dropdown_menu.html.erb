@@ -12,7 +12,7 @@
 		    <ul>
 			    <li><%= link_to(current_user.user_name, '#', class: 'drop-down-user-name size-xl')  %></li>
 			    <li><%= link_to('Информация', user_path('user')) %></li>
-			    <li><%= button_to('Выйти', "/session/#{session[:user_id]}", method: :delete)  %></li>				      
+			    <li><%= button_to('Выйти', session_path, method: :delete, data: {turbo: false})  %></li>			    			    
 		  </ul>
 		</details>
 

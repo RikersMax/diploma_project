@@ -1,4 +1,4 @@
-class SessionController < ApplicationController
+class SessionsController < ApplicationController
 
   before_action(:no_require_authentication, only: %i[new create])
 	before_action(:require_authentication, only: %i[destroy])
@@ -10,7 +10,6 @@ class SessionController < ApplicationController
   def create
     @user = User.find_by(email: session_params[:email])    
 
-    #debugger
     if @user.present? && @user.authenticate(session_params[:password])
       @user.remember_me
       
@@ -37,12 +36,6 @@ class SessionController < ApplicationController
 
   def session_params
     params.require(:user).permit(:email, :password)
-  end
-
-  def user_exits
-    if user_signed_in? then
-      redirect_to(root_path)
-    end
   end
 
 end
