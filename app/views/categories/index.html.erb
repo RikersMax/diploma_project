@@ -6,15 +6,15 @@
 			<div class="category-header-container">
 				<span class="category-header-name size-xxl"><%= @acc_object.name_object %></span>
 				<div>
-					<span class="show-category-type-object-<%= @acc_object.type_object_id%>"><%= @acc_object.type_object.name_type %></span>
+					<span class="show-category-type-object-<%= @acc_object.type_object_id%>">
+						<%= t("acc_boject.#{@acc_object.type_object.name_type}") %>
+					</span>
 				</div>
 			</div>
 
 			<div class="show-container-accounting">					
 				<div class="show-container-category-section-left">
-
 					<%= render(partial: 'form', locals: {category_model: @category_new, method_action: 'POST'})  %>
-
 				</div>
 
 				<div class="show-container-category-section-reight">

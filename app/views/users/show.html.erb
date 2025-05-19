@@ -48,8 +48,10 @@
 
 				            <div class="card-description-object-setting">
 					            
-					            <span class="card-description-<%= @name_type %>"><%= @name_type %></span>
-					            <span><%= @name_kind %></span>
+					            <span class="card-description-<%= @name_type %>">
+					            	<%= t("acc_boject.#{@name_type}") %>
+					            </span>
+					            <span><%= t("acc_boject.#{@name_kind}") %></span>
 					            
 				            </div>
 				        </a>

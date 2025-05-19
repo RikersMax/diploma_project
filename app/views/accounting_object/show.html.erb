@@ -13,7 +13,9 @@
 							<span>Тип объекта</span>
 						</div>
 						<div>
-							<span class="show-accoutnting-type-object-<%= @acc_object.type_object_id%>"><%= @acc_object.type_object.name_type %></span>
+							<span class="show-accoutnting-type-object-<%= @acc_object.type_object_id%>">
+								<%= t("acc_boject.#{@acc_object.type_object.name_type}") %>									
+							</span>
 						</div>
 					</div>
 					
@@ -31,7 +33,7 @@
 
 							<div class="show-accounting-date-fields">
 								<%= ff.label(:date_end, 'Дата конец')  %>
-								<%= ff.date_field(:date_end, value: @date_end) %>
+								<%= ff.date_field(:date_end, value: @date_end, max: Time.now.to_date) %>
 							</div>
 
 						<% end %>

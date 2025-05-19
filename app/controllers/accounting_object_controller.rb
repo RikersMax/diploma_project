@@ -17,7 +17,6 @@ class AccountingObjectController < ApplicationController
 
   def show
    
-
     user = User.find_by(remember_token_digest: session[:user_id])
     acc_object_decript = Base64.decode64(params[:id])
       @date_end = Time.now
@@ -47,8 +46,7 @@ class AccountingObjectController < ApplicationController
       flash[:message] = '1 error from accounting_object#show'
       redirect_to(root_path)
     end
-=begin
-=end
+
   end
 
   def create

@@ -99,6 +99,7 @@
 .card-description-object-setting {
 	display: flex;
 	flex-direction: column;
+	gap: 0.5em;
 }
 
 .card-description-expense {
