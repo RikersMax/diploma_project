@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_action(:require_authentication, only: %i[show edit update destroy])
+  before_action(:require_authentication, only: %i[show edit update])
   before_action(:no_require_authentication, only: %i[new create])
 
 	def index
@@ -17,7 +17,6 @@ class UsersController < ApplicationController
     @accounting_objects = @user.accounting_object #['test1', 'test2', 'test3', 'test4']#@user.accounting_object
   end
 
-
   def create
 
     @user = User.new(user_params)
@@ -32,7 +31,7 @@ class UsersController < ApplicationController
 
       flash[:message] = 'user created'
       session[:user_id] = @user.remember_token
-      redirect_to(root_path)
+      redirect_to(accounting_object_index_path)
       
       #render(plain: session[:user_id])
     else
@@ -41,34 +40,27 @@ class UsersController < ApplicationController
     end
   end
 
-
-
   def edit
     @user = User.find_by(remember_token_digest: session[:user_id])
   end
 
   def update
-    user = User.find_by(remember_token_digest: session[:user_id])
+    @user = User.find_by(remember_token_digest: session[:user_id])
 
-    if user.update(user_params) then
+    if @user.update(user_params) then
       flash['message'] = 'Your update profile'
-      redirect_to(root_path)
+      redirect_to(user_path('user'))
     else
-      flash['message'] = t('flash.danger')
+      flash['message'] = @user.errors.full_messages
       render(:edit)
     end
   end
-
-  def destroy
-
-  end
-
 
 
   private
 
   def user_params
-    params.require(:user).permit(:user_name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:user_name, :email, :password, :password_confirmation, :old_password)
   end
  
 end

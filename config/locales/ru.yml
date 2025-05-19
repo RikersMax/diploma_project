@@ -8,6 +8,9 @@ ru:
     email: "Почта"
     password_first: "Пароль"
     password_second: "Повторите пароль"
+    password_old: "Старый пароль"
+    password_new: "Новый пароль"
+    password_second_new: "Повторите новый пароль"
 
   table:
     number: "№"

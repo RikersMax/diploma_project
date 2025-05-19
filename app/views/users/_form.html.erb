@@ -16,18 +16,32 @@
 			<%= f.text_field(:email, palaceholder: t('user.email'), class: 'form-input-create-object size-xl m-top-s', required: true) %>
 		</div>
 
+		<% unless object_user.new_record? %>
+
+			<div class="form-container-field-object">
+				<%= f.label(:old_password, value: t('user.password_old'), class: 'm-top-m size-xl')  %>
+				<%= f.password_field(:old_password, class: 'form-input-create-object size-xl m-top-s')  %>
+			</div>
+
+		<% end %>
+
 		<div class="form-container-field-object">
-			<%= f.label(:password, value: (t('user.password_first')), class: 'm-top-m size-xl')  %>
-			<%= f.password_field(:password, class: 'form-input-create-object size-xl m-top-s', required: true)  %>
+			<%= f.label(:password, value: object_user.new_record? ? t('user.password_first') : t('user.password_new'),
+			 class: 'm-top-m size-xl')  
+			 %>
+			<%= f.password_field(:password, class: 'form-input-create-object size-xl m-top-s')  %>
 		</div>
 
 		<div class="form-container-field-object">
-			<%= f.label(:password_confirmation, value: t('user.password_second'), class: 'm-top-m size-xl')  %>
-			<%= f.password_field(:password_confirmation, class: 'form-input-create-object size-xl m-top-s', required: true)  %>
+			<%= f.label(:password_confirmation, 
+				value: object_user.new_record? ? t('user.password_second') : t('user.password_second_new'), 
+				class: 'm-top-m size-xl')  
+			%>
+			<%= f.password_field(:password_confirmation, class: 'form-input-create-object size-xl m-top-s')  %>
 		</div>
 
 		<div class="form-container-field-object m-bot-m m-top-m">			
-			<%= f.submit(btn_sign_in_sign_up(controller), class: 'btn-create-object m-top-s')  %>
+			<%= f.submit(object_user.new_record? ? t('user.sign_up') : t('user.update'), class: 'btn-create-object m-top-s')  %>
 		</div>
 
 	<% end %>
