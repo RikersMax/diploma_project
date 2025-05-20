@@ -68,7 +68,7 @@
 .show-accounting-info-fields {
 	display: flex;
 	justify-content: space-between;
-	margin-top: 2em;
+	margin-top: 1em;
 	margin-bottom: 1em;
 }
 
@@ -80,6 +80,12 @@
 
 .show-accoutnting-type-object-1 {
 	background-color: #FF7070;
+	padding: 0.5em 1em;
+	border-radius: 0.5em;
+}
+
+.show-accoutnting-type-object-date {
+	background-color: #CCEFFF;
 	padding: 0.5em 1em;
 	border-radius: 0.5em;
 }
@@ -105,20 +111,12 @@
 	border: 1px #FF7070 solid;
 }
 
-/*
-#table-content {
-	display: block; 
-	text-align: center;
-	font-size: 1.5rem;
-	margin-top: 2em;	
-}*/
 
 #table-content,
 #chart-content {
 	display: none; 
 	text-align: center;
-/*	font-size: 1.5rem;*/
-/*	margin-top: 2em;*/
+	height: 100%;
 }
 
 .active-content {
@@ -141,4 +139,20 @@
 	cursor: pointer;
 	text-decoration: none;
 	color: #000;	
+}
+
+
+/* chart-content */
+
+.chart-container {
+	display: flex;
+	padding: 1em;
+	height: 100%;
+	flex-direction: column;
+	justify-content: center;	
+}
+
+#pie-chart {
+/*	width: 100%;*/
+/*	font-size: 5em;*/
 }

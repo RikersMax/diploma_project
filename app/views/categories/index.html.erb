@@ -1,10 +1,14 @@
 
 <article class="content-container-main-center">
-	<section class="content-section">		
-
+	<div>
+	</div>
+	<section class="content-section">
+		<div>
+			<%= link_to('Назад', accounting_object_path(Base64.encode64(@acc_object.id.to_s)), class: 'btn-category-back-acc')  %>
+		</div>
 		<div class="show-main-container-accounting">
 			<div class="category-header-container">
-				<span class="category-header-name size-xxl"><%= @acc_object.name_object %></span>
+				<span class="category-header-name"><%= @acc_object.name_object %></span>
 				<div>
 					<span class="show-category-type-object-<%= @acc_object.type_object_id%>">
 						<%= t("acc_boject.#{@acc_object.type_object.name_type}") %>

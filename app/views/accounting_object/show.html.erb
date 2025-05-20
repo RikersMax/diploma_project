@@ -10,11 +10,22 @@
 
 					<div class="show-accounting-info-fields">
 						<div>
-							<span>Тип объекта</span>
+							<span>Тип объекта:</span>
 						</div>
 						<div>
 							<span class="show-accoutnting-type-object-<%= @acc_object.type_object_id%>">
 								<%= t("acc_boject.#{@acc_object.type_object.name_type}") %>									
+							</span>
+						</div>
+					</div>
+
+					<div class="show-accounting-info-fields">
+						<div>
+							<span>Дата создания:</span>
+						</div>
+						<div>
+							<span class="show-accoutnting-type-object-date">
+								<%= @acc_object.created_at.to_date %>									
 							</span>
 						</div>
 					</div>
@@ -28,7 +39,7 @@
 
 							<div class="show-accounting-date-fields">								
 								<%= ff.label(:date_start, 'Дата начало')  %>
-								<%= ff.date_field(:date_start, value: @date_start) %>
+								<%= ff.date_field(:date_start, value: @date_start, max: Time.now.to_date) %>
 							</div>
 
 							<div class="show-accounting-date-fields">
@@ -95,7 +106,7 @@
 						<%= render(partial: 'show_table')  %>
 					</div>
 
-					<div id="chart-content" >
+					<div id="chart-content">
 						<%= render(partial: 'show_chart')  %>
 					</div>
 				</div>

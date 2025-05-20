@@ -4,7 +4,7 @@ class AccountingObjectController < ApplicationController
 
   def index
     user = User.find_by(remember_token_digest: session[:user_id])
-    @accounting_objects = user.accounting_object 
+    @accounting_objects = user.accounting_object.order(id: :desc)
   
     @accounting_object_new = AccountingObject.new
     @select_kind_of_object = KindOfObject.all
@@ -40,6 +40,41 @@ class AccountingObjectController < ApplicationController
       .where(accounting_object_id: @acc_object.id)
       .where(created_at: @date_start..@date_end)
       .order(created_at: :desc)
+
+      @all_sum = @all_operation_for_acc_object.sum(:amount_of_money)
+
+
+      money_category = {}
+      temp_arr = []
+      category_colors = {}
+
+      @all_operation_for_acc_object.each do |op|
+        money_category[op.category.name_category] = 0
+      end
+
+      @all_operation_for_acc_object.each do |op|
+        temp_arr.push([op.category.name_category, op.amount_of_money.to_i])
+        category_colors[op.category.name_category] = op.category.color_category.delete(';')
+      end
+
+      temp_arr.each do |arr|
+        money_category[arr[0]] += arr[1]
+      end
+
+      @data_category_chart = {data_name_and_money: money_category, data_colors: category_colors}
+
+      
+=begin
+      @all_operation_group_by_category_id = Operation
+      .where(accounting_object_id: @acc_object.id)
+      .where(created_at: @date_start..@date_end)
+      .group(:category_id).count
+
+      @all_operation_to_chart = @all_operation_group_by_category_id.inject({}) do |result, (k, v)| 
+        result[Category.find(k).name_category]=v 
+        result
+      end
+=end
 
       render(:show)
     else
