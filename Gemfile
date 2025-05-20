@@ -14,6 +14,7 @@ gem "bcrypt", "~> 3.1.7"
 gem "bootsnap", require: false
 gem "pagy", "~> 9.3"
 gem "rails-i18n"
+gem "chartkick"
 
 
 group :development, :test do
