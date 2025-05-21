@@ -28,7 +28,7 @@
 
 	    	<div>
 	    		<%if  @select_categories.empty? then  %>
-	    			<%= link_to('create category', 
+	    			<%= link_to(t('btn.add_category'), 
 	    			categories_path(accounting_object_id: @acc_object_encript), 
 	    			class: 'btn-user-action')  %>
 	    		<% else %>

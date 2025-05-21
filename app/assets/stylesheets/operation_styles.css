@@ -61,3 +61,7 @@
 	top: 6em;
 	left: 2em;
 }
+
+#operation_amount_of_money {
+	width: 50%;
+}
