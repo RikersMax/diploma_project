@@ -61,11 +61,13 @@
 .accounting-objects-table .type-object-id-1 {
     background-color: #ff4d4d;
     color: #000;
+    text-align: center;
 }
 
 .accounting-objects-table .type-object-id-2 {
     background-color: #159d28;
     color: #000;
+    text-align: center;
 }
 
 

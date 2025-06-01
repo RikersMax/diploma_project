@@ -1,12 +1,26 @@
+<% if category_model.persisted? then%>
+
+	<% render('shared/errors', object_error: category_model )%>
+
+<% else %>
+
+	<% render('shared/errors_category', object_error:  params[:category_errors] ) %>
+
+<% end %>
+
 <div class="user-setting-header size-xl">
-	<span><%= category_model.persisted? ? 'update category' : 'create category' %></span>
+	<span><%= category_model.persisted? ? t('btn.upd_category') : t('btn.add_category') %></span>
 </div>
 
 <%= form_with(model: category_model, method: method_action, data: { turbo: false }) do |f| %>
 
 	<div class="show-categories-date-fields ">								
-		<%= f.label(:name_category, 'name category')  %>
-		<%= f.text_field(:name_category,placeholder: 'Категория' ,required: true) %>
+		<%= f.label(:name_category, t('form.name_category'))  %>
+		<%= f.text_field(:name_category, 
+			placeholder: 'Категория', 
+			value: (category_model.persisted? ? category_model.name_category : params[:category_name_placeholder]), 
+			required: true
+		) %>
 	</div>
 
 	<div hidden>
@@ -16,7 +30,7 @@
 	<div class="colors-palette-container">
 
 		<div style="text-align: center;">
-			<span>choice color</span>
+			<span>Выбор цвета</span>
 		</div>
 		
 		<div class="form-radio-btn-container">
@@ -33,7 +47,7 @@
 
 			<div class="form-radio-btn-category">
 				<input id="radio-category-color-3" type="radio" name="category[color_category]" value="#dd99ff;">
-				<label for="radio-category-color-3" id="radio-category-color-3-label"></label>
+				<label for="radio-category-color-3" id="radio-category-color-3-label" ></label>
 			</div>
 	    </div>
 
@@ -50,7 +64,7 @@
 
 			<div class="form-radio-btn-category">
 				<input id="radio-category-color-6" type="radio" name="category[color_category]" value="#99ff99;">
-				<label for="radio-category-color-6" id="radio-category-color-6-label"></label>
+				<label for="radio-category-color-6" id="radio-category-color-6-label" ></label>
 			</div>
 		</div>
 
@@ -67,7 +81,7 @@
 
 			<div class="form-radio-btn-category">
 				<input id="radio-category-color-9" type="radio" name="category[color_category]" value="#000000;">
-				<label for="radio-category-color-9" id="radio-category-color-9-label"></label>
+				<label for="radio-category-color-9" id="radio-category-color-9-label" ></label>
 			</div>
 		</div>
 
@@ -75,7 +89,7 @@
 
 
 	<div style="text-align: center;">
-		<%= f.submit(category_model.persisted? ? 'update' : 'create', class: 'btn-date-show size-xl')  %>
+		<%= f.submit(category_model.persisted? ? t('btn.update') : t('btn.create'), class: 'btn-date-show size-xl')  %>
 	</div>
 
 <% end %>

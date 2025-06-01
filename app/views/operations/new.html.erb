@@ -1,5 +1,7 @@
 <article class="content-container-main-center">
 	<section class="content-section-operation">
+		<%# link_to('Назад', accounting_object_path(@acc_object_encript), class: 'btn-operation-back-acc')  %>
+	
 		<%= render(partial: 'form', 
 		locals: {operation: @operation,
 			id_encod_operation: false}

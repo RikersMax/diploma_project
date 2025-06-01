@@ -1,0 +1,15 @@
+<%= provide(:errors_messages) do  %>
+
+	<% if object_error then %>	
+		<div class="message-main-container">
+			<div class="message-container">
+				<ul class="list-errors">						
+					<% object_error.each do |msg| %>
+						<li><%= msg %></li>
+					<% end %>		
+				</ul>
+			</div>
+		</div>
+	<% end %>
+
+<% end %>

@@ -18,7 +18,8 @@
             </header>
 
             <main>
-                <%= render(partial: 'shared/message') if !flash.empty? %>                
+                <%= render(partial: 'shared/message') if !flash.empty? %>
+                <%= yield(:errors_messages) %>
                 <%= yield %>
             </main>
 

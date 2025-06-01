@@ -2,29 +2,31 @@
 	<section class="content-section-table">
 
 		<div class="user-setting-header size-xxl">
-			<span>list user objects</span>
+			<span>Список ваших объектов</span>
 		</div>
 		
 		<table class="accounting-objects-table">
 			<thead>
 				<tr>
-					<th>name_object</th>
-					<th>type_object_id</th>
-					<th>kind_of_object_id</th>
-					<th>edit</th>
-					<th>show</th>
-					<th style="text-align: center;">add record</th>
+					<th><%= t('table.name_object')  %></th>
+					<th><%= t('table.type_object_id')  %></th>
+					<th style="text-align: center;"><%= t('table.kind_of_object_id')  %></th>
+					<th><%# t('table.edit')  %></th>
+					<th><%# t('table.show')  %></th>
+					<th><%# t('table.add_record')  %></th>
 				</tr>
 			</thead>
 			<tbody>
 				<% accounting_objects.each do |acc_obj|  %>
 				<tr>
 					<td><%= acc_obj.name_object  %></td>
-					<td class="type-object-id-<%= acc_obj.type_object_id%>"><%= acc_obj.type_object.name_type  %></td>
-					<td><%= acc_obj.kind_of_object.name_kind  %></td>
-					<td><%= link_to('edit', edit_accounting_object_path(Base64.encode64(acc_obj.id.to_s)))  %></td>
-					<td><%= link_to('show', accounting_object_path(Base64.encode64(acc_obj.id.to_s)))  %></td>
-					<td style="text-align: center;"><%= link_to('record', 
+					<td class="type-object-id-<%= acc_obj.type_object_id%>">
+						<%= t("acc_boject.#{acc_obj.type_object.name_type}")  %>
+					</td>
+					<td style="text-align: center;"><%= t("acc_boject.#{acc_obj.kind_of_object.name_kind}")  %></td>
+					<td><%# link_to(t('btn.edit'), edit_accounting_object_path(Base64.encode64(acc_obj.id.to_s)))  %></td>
+					<td><%= link_to(t('btn.show'), accounting_object_path(Base64.encode64(acc_obj.id.to_s)))  %></td>
+					<td style="text-align: center;"><%= link_to(t('btn.add_record'), 
 					new_operation_path(accounting_object_id: Base64.encode64(acc_obj.id.to_s))  
 					)%></td>
 				</tr>	
@@ -32,7 +34,7 @@
 			</tbody>
 			<tfoot>
 				<tr>
-					<td colspan="6">something</td>
+					<td colspan="6"></td>
 				</tr>
 			</tfoot>			
 		</table>

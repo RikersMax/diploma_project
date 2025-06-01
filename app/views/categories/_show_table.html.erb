@@ -2,11 +2,11 @@
 	<table class="accounting-category-table">
 		<thead>
 			<tr>
-				<th>number</th>
-				<th>name_category</th>
-				<th>color_category</th>
-				<th>edit</th>
-				<th>delte</th>			
+				<th><%= t('table.number') %></th>
+				<th><%= t('table.category') %></th>
+				<th><%= t('table.color') %></th>
+				<th><%= t('table.edit') %></th>
+				<th><%= t('table.delte') %></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -15,8 +15,8 @@
 				<td><%= i + 1 %></td>
 				<td><%= category.name_category %></td>
 				<td class="color_category"><div style="background-color: <%=category.color_category  %>;"></div></td>
-				<td><%= link_to('edit', edit_category_path(id: Base64.encode64(category.id.to_s), accounting_object_id: @acc_object_encript)) %></td>
-				<td><%= button_to('delete', category, 
+				<td><%= link_to(t('btn.edit'), edit_category_path(id: Base64.encode64(category.id.to_s), accounting_object_id: @acc_object_encript)) %></td>
+				<td><%= button_to(t('btn.delete'), category, 
 				{method: :delete,
 				class: 'btn-delete-category',				 
 				params: {accounting_object_id: @acc_object_encript}								
@@ -32,7 +32,6 @@
 		</tfoot>			
 	</table>
 </div>
-
 
 <script>
 

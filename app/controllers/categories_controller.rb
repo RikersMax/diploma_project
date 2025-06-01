@@ -11,8 +11,8 @@ class CategoriesController < ApplicationController
 
     check_user_request(user, @acc_object) #проверка
 
-    @category_new = Category.new
-    @category_new.accounting_object = @acc_object
+    @form_category = Category.new
+    @form_category.accounting_object = @acc_object
 
     @pagy, @category_list = pagy(Category.where(accounting_object_id: @acc_object.id), limit: 8)
   end
@@ -25,16 +25,21 @@ class CategoriesController < ApplicationController
 
     check_user_request(user, @acc_object)
 
-    category_create = Category.new(name_category: params[:category][:name_category], 
+    @form_category = Category.new(name_category: params[:category][:name_category], 
       accounting_object_id: @acc_object.id,
       color_category: params[:category][:color_category])
 
-    if category_create.save then
+    if @form_category.save then
       flash[:message] = 'category created'
       redirect_to(categories_path(accounting_object_id: params[:category][:accounting_object_id]))
     else
-      flash[:message] = category_create.errors.full_messages
-      redirect_to(root_path)
+      category_name_placeholder = @form_category.name_category
+      category_errors = @form_category.errors.full_messages
+      redirect_to(categories_path(
+        accounting_object_id: params[:category][:accounting_object_id], 
+        category_errors: category_errors,
+        category_name_placeholder: category_name_placeholder
+        ))
     end    
    
   end
@@ -74,7 +79,7 @@ class CategoriesController < ApplicationController
     else
       @acc_object_encript = params[:category][:accounting_object_id]
       @category = category_update
-      flash[:message] = '2 error form categories#create'
+      
       render(:edit)
     end
        

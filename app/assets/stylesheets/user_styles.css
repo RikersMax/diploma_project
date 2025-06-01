@@ -53,7 +53,7 @@
 	justify-content: center;
 	flex-direction: column;	
 	background-color: #93DAFB;
-	width: auto%;
+	width: 50%;
 	min-height: 50%;
 	border-radius: 1em;
 	padding: 1em 2em;
@@ -99,6 +99,7 @@
 .card-description-object-setting {
 	display: flex;
 	flex-direction: column;
+	gap: 0.5em;
 }
 
 .card-description-expense {

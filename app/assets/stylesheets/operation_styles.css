@@ -49,3 +49,19 @@
      margin: 0; 
 }
 
+.btn-operation-back-acc {
+	font-size: 1.25em;
+	background-color: #CCEFFF;
+	padding: 0.5em 1em;
+	border-radius: 0.5em;
+	cursor: pointer;
+	text-decoration: none;
+	color: #000;
+	position: absolute;
+	top: 6em;
+	left: 2em;
+}
+
+#operation_amount_of_money {
+	width: 50%;
+}

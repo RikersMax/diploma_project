@@ -1,4 +1,4 @@
-class SessionController < ApplicationController
+class SessionsController < ApplicationController
 
   before_action(:no_require_authentication, only: %i[new create])
 	before_action(:require_authentication, only: %i[destroy])
@@ -8,10 +8,9 @@ class SessionController < ApplicationController
   end
 
   def create
-   #render(plain: params)
-    @user = User.find_by(email: session_params[:email])    
+    @user = User.find_by(email: params[:email])
 
-    if @user.present? && @user.authenticate(session_params[:password])
+    if @user&.authenticate(params[:password])
       @user.remember_me
       
       #user_attributes = @user.attributes.transform_keys(&:to_sym).slice(:id, :name, :email)
@@ -21,28 +20,15 @@ class SessionController < ApplicationController
       session[:user_id] = @user.remember_token
       redirect_to(root_path)
     else
-      flash[:message] = 'message from session#creat'
-      @user = User.new
+      flash.now[:message] = 'Неправильноый Email или пароль'
       render(:new)
     end
-  
+
   end
 
   def destroy 
     user_compliete_session
     redirect_to(root_path)    
-  end
-
-  private
-
-  def session_params
-    params.require(:user).permit(:email, :password)
-  end
-
-  def user_exits
-    if user_signed_in? then
-      redirect_to(root_path)
-    end
   end
 
 end

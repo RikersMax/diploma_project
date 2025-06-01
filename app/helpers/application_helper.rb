@@ -14,12 +14,12 @@ module ApplicationHelper
 	end
 
 	def btn_sign_in_sign_up(controller)
-		result = {}
+		result = ''
 
-		if controller == 'session' then
-			result = {btn: 'sign_in'}
+		if controller == 'sessions' then
+			result = t('user.sign_in')
 		elsif controller == 'user'
-			result = {btn: 'sign_up'}
+			result = t('user.sign_up')
 		end
 
 		return(result)
@@ -28,9 +28,9 @@ module ApplicationHelper
 	def create_or_update(model)
 		result = ''
 		if model.persisted? then
-			result = 'update'
+			result = (t('btn.update'))
 		else
-			result = 'create'
+			result = (t('btn.create'))
 		end
 
 		return(result)		

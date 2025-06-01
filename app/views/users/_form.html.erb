@@ -1,34 +1,51 @@
+
+<% render('shared/errors', object_error: object_user ) %>
+
+
 <div class="content-form-container-create-session">
 		
 	<%= form_with(model: object_user, data: { turbo: false }) do |f| %>
 
 		<div class="text-bottom-create-object size-xxl">
-			<p><%= action_controller  %></p>			
+			<p>Регистрация</p>			
 		</div>
 
 		<div class="form-container-field-object">
-			<%= f.label(:user_name, value: 'user_name', class: 'm-top-m size-xl')  %>
-			<%=f.text_field(:user_name, palaceholder: 'user_name', class: 'form-input-create-object size-xl m-top-s') %>
+			<%= f.label(:user_name, value: t('user.user_name'), class: 'm-top-m size-xl')  %>
+			<%= f.text_field(:user_name, palaceholder: t('user.user_name'), class: 'form-input-create-object size-xl m-top-s', required: true) %>
 		</div>
 
 		<div class="form-container-field-object">
-			<%= f.label(:email, value: 'email', class: 'm-top-m size-xl')  %>
-			<%=f.text_field(:email, palaceholder: 'email', class: 'form-input-create-object size-xl m-top-s') %>
+			<%= f.label(:email, value: t('user.email'), class: 'm-top-m size-xl')  %>
+			<%= f.text_field(:email, palaceholder: t('user.email'), class: 'form-input-create-object size-xl m-top-s', required: true) %>
 		</div>
 
+		<% unless object_user.new_record? %>
+
+			<div class="form-container-field-object">
+				<%= f.label(:old_password, value: t('user.password_old'), class: 'm-top-m size-xl')  %>
+				<%= f.password_field(:old_password, class: 'form-input-create-object size-xl m-top-s')  %>
+			</div>
+
+		<% end %>
 
 		<div class="form-container-field-object">
-			<%= f.label(:password, value: 'password first', class: 'm-top-m size-xl')  %>
+			<%= f.label(:password, value: object_user.new_record? ? t('user.password_first') : t('user.password_new'),
+			 class: 'm-top-m size-xl')  
+			 %>
 			<%= f.password_field(:password, class: 'form-input-create-object size-xl m-top-s')  %>
 		</div>
 
 		<div class="form-container-field-object">
-			<%= f.label(:password_confirmation, value: 'password second', class: 'm-top-m size-xl')  %>
+			<%= f.label(:password_confirmation, 
+				value: object_user.new_record? ? t('user.password_second') : t('user.password_second_new'), 
+				class: 'm-top-m size-xl')  
+			%>
 			<%= f.password_field(:password_confirmation, class: 'form-input-create-object size-xl m-top-s')  %>
 		</div>
 
-		<div class="form-container-field-object m-bot-l m-top-m">			
-			<%= f.submit(btn_sign_in_sign_up(controller)[:btn], class: 'btn-create-object m-top-l')  %>
+		<div class="form-container-field-object m-bot-m m-top-m">			
+			<%= f.submit(object_user.new_record? ? t('user.sign_up') : t('user.update'), class: 'btn-create-object m-top-s')  %>
 		</div>
 
 	<% end %>

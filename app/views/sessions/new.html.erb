@@ -1,0 +1,30 @@
+<article class="content-container-main-center">
+	<section class="content-section-session ">
+		
+		<div class="content-form-container-create-session">
+		
+			<%= form_with(url: session_path ,method: 'POST', data: { turbo: false }) do |f| %>
+
+				<div class="text-bottom-create-object size-xxl">
+					<p>Вход  в аккаунт</p>			
+				</div>
+
+				<div class="form-container-field-object">
+					<%= f.label(:email, t('user.email'), class: 'm-top-m size-xl')  %>
+					<%= f.text_field(:email, palaceholder: t('user.email'), class: 'form-input-create-object size-xl m-top-s', required: true, value: params[:email]) %>
+				</div>
+
+				<div class="form-container-field-object">
+					<%= f.label(:password, t('user.password_first'), class: 'm-top-m size-xl')  %>
+					<%= f.password_field(:password, class: 'form-input-create-object size-xl m-top-s', required: true)  %>
+				</div>
+
+				<div class="form-container-field-object m-bot-m m-top-m">			
+					<%= f.submit(btn_sign_in_sign_up('sessions'), class: 'btn-create-object m-top-s')  %>
+				</div>
+
+			<% end %>
+	
+		</div>
+	</section>
+</article>
