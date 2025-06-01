@@ -8,9 +8,9 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @user = User.find_by(email: session_params[:email])    
+    @user = User.find_by(email: params[:email])
 
-    if @user.present? && @user.authenticate(session_params[:password])
+    if @user&.authenticate(params[:password])
       @user.remember_me
       
       #user_attributes = @user.attributes.transform_keys(&:to_sym).slice(:id, :name, :email)
@@ -20,22 +20,15 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.remember_token
       redirect_to(root_path)
     else
-      flash[:message] = "Неправильный пароль или email"
-      @user = User.new(email: session_params[:email])
+      flash.now[:message] = 'Неправильноый Email или пароль'
       render(:new)
     end
-  
+
   end
 
   def destroy 
     user_compliete_session
     redirect_to(root_path)    
-  end
-
-  private
-
-  def session_params
-    params.require(:user).permit(:email, :password)
   end
 
 end

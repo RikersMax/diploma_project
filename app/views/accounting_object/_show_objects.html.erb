@@ -10,10 +10,10 @@
 				<tr>
 					<th><%= t('table.name_object')  %></th>
 					<th><%= t('table.type_object_id')  %></th>
-					<th><%= t('table.kind_of_object_id')  %></th>
+					<th style="text-align: center;"><%= t('table.kind_of_object_id')  %></th>
 					<th><%# t('table.edit')  %></th>
 					<th><%# t('table.show')  %></th>
-					<th style="text-align: center;"><%# t('table.add_record')  %></th>
+					<th><%# t('table.add_record')  %></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -23,8 +23,8 @@
 					<td class="type-object-id-<%= acc_obj.type_object_id%>">
 						<%= t("acc_boject.#{acc_obj.type_object.name_type}")  %>
 					</td>
-					<td><%= t("acc_boject.#{acc_obj.kind_of_object.name_kind}")  %></td>
-					<td><%= link_to(t('btn.edit'), edit_accounting_object_path(Base64.encode64(acc_obj.id.to_s)))  %></td>
+					<td style="text-align: center;"><%= t("acc_boject.#{acc_obj.kind_of_object.name_kind}")  %></td>
+					<td><%# link_to(t('btn.edit'), edit_accounting_object_path(Base64.encode64(acc_obj.id.to_s)))  %></td>
 					<td><%= link_to(t('btn.show'), accounting_object_path(Base64.encode64(acc_obj.id.to_s)))  %></td>
 					<td style="text-align: center;"><%= link_to(t('btn.add_record'), 
 					new_operation_path(accounting_object_id: Base64.encode64(acc_obj.id.to_s))  

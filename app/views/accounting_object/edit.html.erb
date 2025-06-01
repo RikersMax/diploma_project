@@ -1,5 +1,8 @@
 <article class="content-container-main-center">
 	<section class="content-section">
+		
+		<% render('shared/errors', object_error: @acc_object_user ) %>
+
 		<%= render(partial: 'form', locals: {
 			accounting_object: @acc_object_user, 
 			select_kind_of_object: @select_kind_of_object, 

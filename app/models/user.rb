@@ -6,7 +6,7 @@ class User < ApplicationRecord
 	
   has_secure_password(validations: false)
 
-  validates(:user_name, {presence: true, length: {mi8nimum: 4, maximum: 64 }})
+  validates(:user_name, {presence: true, length: {minimum: 4, maximum: 64 }})
   validates(:email, {
     presence: true, 
     uniqueness: true, 
@@ -51,7 +51,7 @@ class User < ApplicationRecord
   def correct_old_password
     return if BCrypt::Password.new(password_digest_was).is_password?(old_password)
     #password_digest_was - возвращаяет старый дайджест пароль из БД
-    errors.add(:old_password, 'old password in incorrect')
+    errors.add(:old_password, 'Неверный старый пароль')
   end
 
   # def digest(string)

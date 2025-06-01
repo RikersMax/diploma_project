@@ -13,7 +13,6 @@ class OperationsController < ApplicationController
 
     @operation = Operation.new
 
-
   end
 
   def show
@@ -46,7 +45,7 @@ class OperationsController < ApplicationController
     else
       categories_all = Category.where(accounting_object_id: acc_object_decript)
       @select_categories = categories_all.inject([]) {|arr, item| arr.push([item.name_category, item.id])}
-      flash[:message] = @operation.errors.full_messages
+      #flash[:message] = @operation.errors.full_messages
       render(:new)
     end
    

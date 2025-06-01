@@ -1,6 +1,43 @@
+.message-main-container-flash {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	margin-top: 1em;
+}
+
+.message-container-flash {
+	min-width: 20%;
+	background-color: #FF7070;
+	padding: 0.5em 1em;
+	margin-top: 1em;
+}
+
+
 .message-main-container {
-	position: fixed;
-	background-color: red;
-/*	visibility: hidden;*/	
-	z-index: 1000;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	margin-top: 1em;
+}
+
+.message-container {
+	min-width: 20%;	
+}
+
+.list-errors li {	
+	list-style: none;
+	margin-top: 1em;
+	background-color: #FF7070;
+	padding: 0.5em 1em;
+}
+
+
+.field_with_errors label{
+	color: #ff4d4d;
+}
+
+
+.field_with_errors input{
+	border: 2px solid;
+	border-color: #FF7070;
 }

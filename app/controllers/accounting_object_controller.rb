@@ -41,8 +41,7 @@ class AccountingObjectController < ApplicationController
       .where(created_at: @date_start..@date_end)
       .order(created_at: :desc)
 
-      @all_sum = @all_operation_for_acc_object.sum(:amount_of_money)
-
+      #@all_sum = @all_operation_for_acc_object.sum(:amount_of_money)
 
       money_category = {}
       temp_arr = []
@@ -78,7 +77,7 @@ class AccountingObjectController < ApplicationController
 
       render(:show)
     else
-      flash[:message] = '1 error from accounting_object#show'
+      flash.now[:message] = '1 error from accounting_object#show'
       redirect_to(root_path)
     end
 
@@ -91,13 +90,13 @@ class AccountingObjectController < ApplicationController
     acc_object = AccountingObject.new(params_create)
 
     if acc_object.save then
-      flash[:message] = 'acc_object created'
+      flash.now[:message] = 'acc_object created'
       redirect_to(accounting_object_index_path)
     else
       @accounting_object_new = acc_object
       @select_kind_of_object = KindOfObject.all
 
-      flash[:message] = acc_object.errors.full_messages
+      #flash[:message] = acc_object.errors.full_messages
       render(:new)
     end
   
@@ -113,12 +112,10 @@ class AccountingObjectController < ApplicationController
     if user.id == acc_object.user_id then
       @select_kind_of_object = KindOfObject.all
       @acc_object_user = acc_object
-    else      
-      flash[:message] = '1 error from accounting_object#edit'
+    else
       redirect_to(root_path)
     end
   end
-
 
   def update
 
@@ -127,15 +124,13 @@ class AccountingObjectController < ApplicationController
 
     if user.id == acc_object.user_id then
 
-      if acc_object.update(accounting_object_params) then
-        flash[:message] = 'acc_object update'
+      if acc_object.update(accounting_object_params) then        
         redirect_to(accounting_object_index_path)
       else
         @accounting_object_new = AccountingObject.new
         @select_kind_of_object = KindOfObject.all
         @acc_object_user = acc_object
 
-        flash.now[:message] = acc_object.errors.full_messages
         render(:edit)
       end
 

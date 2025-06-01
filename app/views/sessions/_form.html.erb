@@ -1,26 +1,3 @@
-<div class="content-form-container-create-session">
-		
-	<%= form_with(model: object_user, url: session_path ,method: 'POST', data: { turbo: false }) do |f| %>
 
 
-		<div class="text-bottom-create-object size-xxl">
-			<p>Вход  в аккаунт</p>			
-		</div>
 
-		<div class="form-container-field-object">
-			<%= f.label(:email, value: t('user.email'), class: 'm-top-m size-xl')  %>
-			<%= f.text_field(:email, palaceholder: t('user.email'), class: 'form-input-create-object size-xl m-top-s', required: true) %>
-		</div>
-
-		<div class="form-container-field-object">
-			<%= f.label(:password, value: t('user.password_first'), class: 'm-top-m size-xl')  %>
-			<%= f.password_field(:password, class: 'form-input-create-object size-xl m-top-s', required: true)  %>
-		</div>
-
-		<div class="form-container-field-object m-bot-m m-top-m">			
-			<%= f.submit(btn_sign_in_sign_up(controller), class: 'btn-create-object m-top-s')  %>
-		</div>
-
-	<% end %>
-	
-</div>
